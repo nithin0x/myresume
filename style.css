@@ -1,10 +1,21 @@
+@import url("https://www.nerdfonts.com/assets/fonts/Meslo/MesloLGS-NF.css");
+
 :root {
-  --bg: #f5f5f7;
-  --card-bg: #ffffff;
-  --accent: #0b63ce;
-  --text-main: #1f2933;
-  --text-muted: #6b7280;
-  --border: #e5e7eb;
+  --bg: #eff1f5;
+  --card-bg: #e6e9ef;
+  --accent: #8839ef;
+  --text-main: #4c4f69;
+  --text-muted: #6c6f85;
+  --border: #ccd0da;
+}
+
+body[data-theme='dark'] {
+  --bg: #24273a;
+  --card-bg: #1e2030;
+  --accent: #c6a0f6;
+  --text-main: #cad3f5;
+  --text-muted: #a5adcb;
+  --border: #414559;
 }
 
 * {
@@ -14,20 +25,12 @@
 body {
   margin: 0;
   padding: 1.5rem;
-  font-family: system-ui, sans-serif;
+  font-family: "MesloLGS NF", "MesloLGS Nerd Font", sans-serif;
   background: var(--bg);
   color: var(--text-main);
   display: flex;
   justify-content: center;
-}
-
-body[data-theme='dark'] {
-  --bg: #020617;
-  --card-bg: #020617;
-  --accent: #38bdf8;
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --border: #1f2937;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 .page {
@@ -36,7 +39,8 @@ body[data-theme='dark'] {
   background: var(--card-bg);
   border-radius: 18px;
   padding: 2rem 2.5rem;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
 header {
@@ -60,7 +64,7 @@ header {
 }
 
 .tagline {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -95,11 +99,8 @@ header {
   border: 1px solid var(--border);
   font-size: 0.72rem;
   color: var(--text-muted);
-  background: #f9fafb;
-}
-
-body[data-theme='dark'] .pill {
-  background: #020617;
+  background: var(--bg);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 h2 {
@@ -107,7 +108,7 @@ h2 {
   text-transform: uppercase;
   margin: 1.4rem 0 0.6rem;
   letter-spacing: 0.12em;
-  color: var(--text-muted);
+  color: var(--accent);
 }
 
 .summary {
@@ -125,13 +126,10 @@ h2 {
   font-size: 0.8rem;
   padding: 0.32rem 0.7rem;
   border-radius: 999px;
-  background: #eef2ff;
-  border: 1px solid #e0e7ff;
-}
-
-body[data-theme='dark'] .skill-chip {
-  background: #020617;
-  border-color: #1d4ed8;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 .item {
@@ -180,22 +178,18 @@ li {
   border-radius: 999px;
   padding: 0.35rem 0.7rem;
   border: 1px solid var(--border);
-  background: #f9fafb;
+  background: var(--bg);
   font-size: 0.78rem;
   cursor: pointer;
+  color: var(--text-main);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 }
 
 .btn:hover {
-  background: #e5f0ff;
+  background: var(--accent);
+  color: #ffffff;
   border-color: var(--accent);
-}
-
-body[data-theme='dark'] .btn {
-  background: #020617;
-}
-
-body[data-theme='dark'] .btn:hover {
-  background: #0f172a;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 640px) {
@@ -206,12 +200,15 @@ body[data-theme='dark'] .btn:hover {
   header {
     flex-direction: column;
   }
+
   .contact {
     text-align: left;
   }
+
   .item-header {
     flex-direction: column;
   }
+
   .item-meta {
     text-align: left;
   }
@@ -220,13 +217,23 @@ body[data-theme='dark'] .btn:hover {
 @media print {
   body {
     padding: 0;
-    background: #ffffff;
+    background: #ffffff !important;
+    color: #000000 !important;
   }
+
   .page {
     box-shadow: none;
     border-radius: 0;
+    background: #ffffff !important;
+    color: #000000 !important;
   }
+
   .toolbar {
     display: none;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: none;
   }
 }
