@@ -19,7 +19,6 @@ function updateThemeButtonLabel() {
   btn.textContent = current === 'light' ? 'Dark Mode' : 'Light Mode';
 }
 
-// Load saved theme or system preference
 function initTheme() {
   const saved = localStorage.getItem(THEME_KEY);
   if (saved === 'light' || saved === 'dark') {
@@ -31,7 +30,6 @@ function initTheme() {
   }
 }
 
-// Download as PDF (uses browser print → Save as PDF)
 function downloadPdf() {
   window.print();
 }
