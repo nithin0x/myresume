@@ -109,4 +109,44 @@ function toggleMatrixEffect() {
   }, 33);
 }
 
-window.addEventListener('DOMContentLoaded', initTheme);
+// Calculate work duration for the current role (Oct 2023)
+function calculateDuration() {
+  const el = document.getElementById('duration-1');
+  if (!el) return;
+
+  const start = new Date(2023, 9, 1); // October 2023
+  const now = new Date();
+  const totalMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  let duration = '';
+  if (years > 0) duration += `${years}y `;
+  duration += `${months}m`;
+  el.textContent = `[${duration}]`;
+}
+
+// Uptime counter (time since page load)
+function startUptime() {
+  const el = document.getElementById('uptime');
+  if (!el) return;
+
+  const loadTime = Date.now();
+
+  function update() {
+    const elapsed = Math.floor((Date.now() - loadTime) / 1000);
+    const h = Math.floor(elapsed / 3600);
+    const m = Math.floor((elapsed % 3600) / 60);
+    const s = elapsed % 60;
+    el.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    requestAnimationFrame(update);
+  }
+
+  update();
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  calculateDuration();
+  startUptime();
+});
