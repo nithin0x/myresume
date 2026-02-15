@@ -7,151 +7,230 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="page">
-    <div class="toolbar">
-      <button class="btn" id="themeToggleBtn" type="button" onclick="toggleTheme()">
-        Toggle Dark Mode
-      </button>
-      <button class="btn" type="button" onclick="downloadPdf()">
-        Download as PDF
-      </button>
+  <div class="crt-overlay"></div>
+  <div class="scanlines"></div>
+
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <span class="btn-close"></span>
+        <span class="btn-minimize"></span>
+        <span class="btn-maximize"></span>
+      </div>
+      <div class="terminal-title">root@nithin-resume:~</div>
     </div>
 
-    <header>
-      <div class="name-title">
-        <h1>Nithin Kumar</h1>
-        <p>Cybersecurity Analyst</p>
-        <p class="tagline">
-          Focused on penetration testing, vulnerability management, </br> and security compliance.
-        </p>
+    <div class="terminal-body">
+      <div class="toolbar">
+        <button class="cmd-btn" onclick="runCommand('theme')" id="themeBtn">
+          <span class="prompt">$</span> toggle_theme
+        </button>
+        <button class="cmd-btn" onclick="runCommand('matrix')" id="matrixBtn">
+          <span class="prompt">$</span> run_matrix
+        </button>
       </div>
-      <div class="contact">
-        <span>Gudalur, India 643212</span>
-        <span>📞 <a href="tel:+917010450370">+91 70104 50370</a></span>
-        <span>✉️ <a href="mailto:nithinkumar.m@protonmail.com">nithinkumar.m@protonmail.com</a></span>
-        <span>🌐 <a href="https://nithin0x.space" target="_blank">nithin0x.space</a></span>
-        <span>🔗 <a href="https://www.linkedin.com/in/cybernithin/" target="_blank">Linkedin</a></span>
-      </div>
-    </header>
 
-    <main>
-      <!-- Professional Summary -->
-      <section class="section">
-        <h2>Professional Summary</h2>
-        <p class="summary">
-          Dynamic Cybersecurity Analyst with hands-on experience at TiQHUB, LLC delivering
-          vulnerability assessments, penetration testing, and security reviews for client
-          environments. Strong focus on risk reduction, regulatory alignment (NIST,ISO),
-          and clear communication with cross-functional teams. Experienced in translating
-          technical findings into actionable remediation steps and driving user awareness to
-          strengthen overall security posture.
-        </p>
+      <!-- Banner -->
+      <div class="banner">
+        <pre class="ascii-art">
+   ██████╗ ███████╗███████╗██╗     ██╗███╗   ██╗███████╗
+  ██╔═══██╗██╔════╝██╔════╝██║     ██║████╗  ██║██╔════╝
+  ██║   ██║█████╗  █████╗  ██║     ██║██╔██╗ ██║█████╗
+  ██║   ██║██╔══╝  ██╔══╝  ██║     ██║██║╚██╗██║██╔══╝
+  ╚██████╔╝██║     ██║     ███████╗██║██║ ╚████║███████╗
+   ╚═════╝ ╚═╝     ╚═╝     ╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝
+        </pre>
+      </div>
+
+      <div class="output" id="output">
+        <div class="line system-msg">[SYSTEM] Initializing secure connection...</div>
+        <div class="line system-msg">[SYSTEM] Loading profile data... OK</div>
+        <div class="line prompt-line"><span class="prompt">root@nithin-resume:~$</span> <span class="cursor">cat ./profile.txt</span></div>
+      </div>
+
+      <!-- Profile Section -->
+      <section class="section" id="profile">
+        <div class="section-header">
+          <span class="prompt">></span> ./profile.sh --info
+        </div>
+        <div class="profile-grid">
+          <div class="profile-main">
+            <h1 class="glitch" data-text="NITHIN KUMAR">NITHIN KUMAR</h1>
+            <p class="title">> Cybersecurity Analyst</p>
+            <p class="tagline">> Focused on penetration testing, vulnerability management, and security compliance.</p>
+          </div>
+          <div class="contact-box">
+            <div class="contact-header">// CONTACT_INFO</div>
+            <div class="contact-item"><span class="label">LOCATION:</span> <span class="value">Gudalur, India 643212</span></div>
+            <div class="contact-item"><span class="label">PHONE:</span> <span class="value"><a href="tel:+917010450370">+91 70104 50370</a></span></div>
+            <div class="contact-item"><span class="label">EMAIL:</span> <span class="value"><a href="mailto:nithinkumar.m@protonmail.com">nithinkumar.m@protonmail.com</a></span></div>
+            <div class="contact-item"><span class="label">WEBSITE:</span> <span class="value"><a href="https://nithin0x.space" target="_blank">nithin0x.space</a></span></div>
+            <div class="contact-item"><span class="label">LINKEDIN:</span> <span class="value"><a href="https://www.linkedin.com/in/cybernithin/" target="_blank">/in/cybernithin</a></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Summary -->
+      <section class="section" id="summary">
+        <div class="section-header">
+          <span class="prompt">></span> ./summary.sh
+        </div>
+        <div class="summary-box">
+          <p>> Dynamic <span class="highlight">Cybersecurity Analyst</span> with hands-on experience at <span class="highlight">TiQHUB, LLC</span> delivering</p>
+          <p>> vulnerability assessments, penetration testing, and security reviews for client environments.</p>
+          <p>> Strong focus on risk reduction, regulatory alignment (NIST, ISO), and clear communication</p>
+          <p>> with cross-functional teams.</p>
+        </div>
       </section>
 
       <!-- Skills -->
-      <section class="section">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-          <span class="skill-chip">Penetration Testing</span>
-          <span class="skill-chip">Vulnerability Assessment</span>
-          <span class="skill-chip">Endpoint Protection</span>
-          <span class="skill-chip">Compliance Monitoring</span>
-          <span class="skill-chip">Patch Management</span>
-          <span class="skill-chip">User Awareness Training</span>
-          <span class="skill-chip">Security Auditing</span>
-          <span class="skill-chip">Risk Analysis & Reporting</span>
-          <span class="skill-chip">Cross-team Collaboration</span>
+      <section class="section" id="skills">
+        <div class="section-header">
+          <span class="prompt">></span> ./skills.sh --list
+        </div>
+        <div class="skills-container">
+          <div class="skills-category">
+            <div class="category-header">[ OFFENSIVE SECURITY ]</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Penetration Testing</span>
+              <span class="skill-tag">Vulnerability Assessment</span>
+              <span class="skill-tag">Red Team</span>
+              <span class="skill-tag">Exploitation</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <div class="category-header">[ DEFENSIVE SECURITY ]</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Endpoint Protection</span>
+              <span class="skill-tag">Compliance Monitoring</span>
+              <span class="skill-tag">Patch Management</span>
+              <span class="skill-tag">Security Auditing</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <div class="category-header">[ RISK & COMPLIANCE ]</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Risk Analysis</span>
+              <span class="skill-tag">NIST Framework</span>
+              <span class="skill-tag">CMMC</span>
+              <span class="skill-tag">ISO 27001</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <div class="category-header">[ SOFT SKILLS ]</div>
+            <div class="skill-tags">
+              <span class="skill-tag">User Awareness Training</span>
+              <span class="skill-tag">Cross-team Collaboration</span>
+              <span class="skill-tag">Technical Reporting</span>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Experience -->
-      <section class="section">
-        <h2>Experience</h2>
-        <div class="item">
-          <div class="item-header">
-            <div>
-              <div class="item-title">Cybersecurity Analyst</div>
-              <div class="item-subtitle">TiQHUB, LLC · United States (Remote)</div>
+      <section class="section" id="experience">
+        <div class="section-header">
+          <span class="prompt">></span> cat ./experience.log
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="job-header">
+                <span class="job-title">Cybersecurity Analyst</span>
+                <span class="job-company">@ TiQHUB, LLC</span>
+                <span class="job-type">[REMOTE]</span>
+              </div>
+              <div class="job-meta">
+                <span class="date">> 2023-06 — PRESENT</span>
+                <span class="duration" id="duration-1"></span>
+              </div>
+              <ul class="job-tasks">
+                <li><span class="bullet">[*]</span> Conduct vulnerability assessments and penetration testing</li>
+                <li><span class="bullet">[*]</span> Audit system configurations for CMMC & NIST compliance</li>
+                <li><span class="bullet">[*]</span> Guide IT teams on secure configurations & hardening</li>
+                <li><span class="bullet">[*]</span> Perform security risk analyses & remediation strategies</li>
+                <li><span class="bullet">[*]</span> Apply security controls for cloud & on-prem resources</li>
+                <li><span class="bullet">[*]</span> Review user access rights to minimize insider risk</li>
+                <li><span class="bullet">[*]</span> Lead cybersecurity awareness training (phishing, social engineering)</li>
+                <li><span class="bullet">[*]</span> Collaborate with cross-functional departments for audit readiness</li>
+              </ul>
             </div>
-            <div class="item-meta">June 2023 – Present</div>
           </div>
-          <ul>
-            <li>Conduct regular vulnerability assessments and penetration testing to identify weaknesses, reducing attack exposure.</li>
-            <li>Audit system configurations and security policies to ensure compliance with CMMC and NIST standards.</li>
-            <li>Guide IT teams on secure configurations to improve baseline hardening.</li>
-            <li>Perform security risk analyses and recommend remediation strategies.</li>
-            <li>Apply and enforce security controls to protect cloud and on-prem resources.</li>
-            <li>Review user access rights to minimize risk from compromised or insider accounts.</li>
-            <li>Lead cybersecurity awareness training focused on phishing and social engineering threats.</li>
-            <li>Collaborate with cross-functional departments to maintain security and audit readiness.</li>
-          </ul>
         </div>
       </section>
 
       <!-- Education -->
-      <section class="section">
-        <h2>Education</h2>
-
-        <div class="item">
-          <div class="item-header">
-            <div>
-              <div class="item-title">Master of Computer Applications · Computer Science</div>
-              <div class="item-subtitle">SRM Institute of Technology & Science · Chennai, India</div>
-            </div>
-            <div class="item-meta">Expected May 2026 · GPA: 9.0 / 10</div>
-          </div>
+      <section class="section" id="education">
+        <div class="section-header">
+          <span class="prompt">></span> ls -la ./education/
         </div>
-
-        <div class="item">
-          <div class="item-header">
-            <div>
-              <div class="item-title">Bachelor of Science · Computer Technology</div>
-              <div class="item-subtitle">DR. SNS Rajalakshmi College of Arts and Sciences · Coimbatore, India</div>
+        <div class="education-list">
+          <div class="education-item">
+            <div class="edu-icon">[M]</div>
+            <div class="edu-content">
+              <div class="edu-title">Master of Computer Applications — Computer Science</div>
+              <div class="edu-school">SRM Institute of Technology & Science · Chennai, India</div>
+              <div class="edu-meta">
+                <span class="date">Expected: May 2026</span>
+                <span class="gpa">GPA: 9.0/10</span>
+              </div>
             </div>
-            <div class="item-meta">May 2023 · GPA: 8.4 / 10</div>
+          </div>
+          <div class="education-item">
+            <div class="edu-icon">[B]</div>
+            <div class="edu-content">
+              <div class="edu-title">Bachelor of Science — Computer Technology</div>
+              <div class="edu-school">DR. SNS Rajalakshmi College of Arts and Sciences · Coimbatore, India</div>
+              <div class="edu-meta">
+                <span class="date">Graduated: May 2023</span>
+                <span class="gpa">GPA: 8.4/10</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Certifications -->
-      <section class="section">
-        <h2>Certifications</h2>
-
-        <div class="item">
-          <div class="item-header">
-            <div class="item-title">Google Cybersecurity Professional Certificate</div>
-            <div class="item-meta">October 2023</div>
-          </div>
+      <section class="section" id="certifications">
+        <div class="section-header">
+          <span class="prompt">></span> cat ./certifications.pem
         </div>
-
-        <div class="item">
-          <div class="item-header">
-            <div class="item-title">Practical Junior Penetration Tester (PJPT)</div>
-            <div class="item-meta">March 2025</div>
+        <div class="cert-grid">
+          <div class="cert-item verified">
+            <div class="cert-status">[VERIFIED]</div>
+            <div class="cert-name">Google Cybersecurity Professional Certificate</div>
+            <div class="cert-date">Issued: October 2023</div>
           </div>
-        </div>
-
-        <div class="item">
-          <div class="item-header">
-            <div class="item-title">Certified Red Team Professional (CRTP)</div>
-            <div class="item-meta">January 2025 (Expected)</div>
+          <div class="cert-item verified">
+            <div class="cert-status">[VERIFIED]</div>
+            <div class="cert-name">Practical Junior Penetration Tester (PJPT)</div>
+            <div class="cert-date">Issued: March 2025</div>
           </div>
-        </div>
-
-        <div class="item">
-          <div class="item-header">
-            <div class="item-title">Certified Web Exploitation Specialist (CWES)</div>
-            <div class="item-meta">May 2026 (Planned)</div>
+          <div class="cert-item pending">
+            <div class="cert-status">[PENDING]</div>
+            <div class="cert-name">Certified Red Team Professional (CRTP)</div>
+            <div class="cert-date">Expected: January 2025</div>
           </div>
-        </div>
-         <div class="item">
-          <div class="item-header">
-            <div class="item-title">Certified Red Team Operator (CRTO)</div>
-            <div class="item-meta">October 2026 (Planned)</div>
+          <div class="cert-item planned">
+            <div class="cert-status">[PLANNED]</div>
+            <div class="cert-name">Certified Web Exploitation Specialist (CWES)</div>
+            <div class="cert-date">Planned: May 2026</div>
+          </div>
+          <div class="cert-item planned">
+            <div class="cert-status">[PLANNED]</div>
+            <div class="cert-name">Certified Red Team Operator (CRTO)</div>
+            <div class="cert-date">Planned: October 2026</div>
           </div>
         </div>
       </section>
-    </main>
+
+      <!-- Footer -->
+      <div class="terminal-footer">
+        <div class="prompt-line"><span class="prompt">root@nithin-resume:~$</span> <span class="cursor">echo $STATUS</span></div>
+        <div class="line output-line">> <span class="success">READY_FOR_OPPORTUNITIES</span></div>
+      </div>
+    </div>
   </div>
 
   <script src="main.js"></script>
