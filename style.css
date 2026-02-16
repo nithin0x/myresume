@@ -1,11 +1,11 @@
 /* ============================================
-   Resume — Clean Document Format
+   Resume - Clean Document Format
    Matching starlight-theme-galaxy palette
    ============================================ */
 
 /* --- CSS Custom Properties --- */
 :root {
-  /* Colors — Dark (default) — Galaxy Theme */
+  /* Colors - Dark (default) - Galaxy Theme */
   --bg-page: hsl(220, 10%, 5%);
   --bg-resume: #17181c;
   --text-primary: #d0d0d5;
