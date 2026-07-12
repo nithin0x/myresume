@@ -23,7 +23,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
   description:
-    'Security analyst with 2+ years securing cloud and enterprise environments across AWS, Azure, and M365. Certified CRTP | CWES | AZ-900 | PJPT. Offense-informed defense.',
+    'Cybersecurity analyst with 2+ years securing AWS, Azure, and M365 environments. CRTP · CWES · PJPT · AZ-900 certified. Red team mindset, blue team discipline, AI-accelerated workflow.',
   keywords: [
     'cybersecurity',
     'penetration testing',
@@ -35,31 +35,69 @@ export const metadata: Metadata = {
     'Azure',
     'AWS',
     'M365',
+    'AI security',
     'Nithin Kumar',
   ],
   authors: [{ name: 'Nithin Kumar M', url: 'https://nithin0x.space' }],
   openGraph: {
-    title: 'Nithin Kumar M — Cybersecurity Analyst',
-    description: 'Offense-informed defense — cloud to endpoint.',
+    title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
+    description:
+      'Red team mindset. Blue team discipline. AI-accelerated execution.',
     type: 'website',
-    url: 'https://resume.nithin0x.space',
+    url: 'https://portfolio.nithin0x.space',
     siteName: 'Nithin Kumar M',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
-    description: 'Offense-informed defense — cloud to endpoint.',
+    description:
+      'Red team mindset. Blue team discipline. AI-accelerated execution.',
   },
-  metadataBase: new URL('https://resume.nithin0x.space'),
+  metadataBase: new URL('https://portfolio.nithin0x.space'),
+}
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Nithin Kumar M',
+  jobTitle: 'Cybersecurity Analyst',
+  worksFor: { '@type': 'Organization', name: 'TiQHUB, LLC' },
+  url: 'https://portfolio.nithin0x.space',
+  sameAs: [
+    'https://linkedin.com/in/cybernithin',
+    'https://github.com/nithin0x',
+    'https://nithin0x.space',
+  ],
+  knowsAbout: [
+    'Penetration Testing',
+    'Cloud Security',
+    'Active Directory Security',
+    'Incident Response',
+    'Security Automation',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'Tamil Nadu',
+    addressCountry: 'IN',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} bg-bg-primary text-[#e2e8f0] font-sans antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} bg-bg-0 text-ink-hi font-sans antialiased`}
       >
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema).replace(/</g, '\\u003c'),
+          }}
+        />
       </body>
     </html>
   )
