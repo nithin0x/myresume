@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
 
         <p className="font-mono text-xs text-ink-low text-center">
-          © {year} Nithin Kumar M · Next.js + Tailwind + Framer Motion ·{' '}
+          © {year} Nithin Kumar M ·{' '}
           <span className="text-[#00ff41]">exit 0</span>
         </p>
 

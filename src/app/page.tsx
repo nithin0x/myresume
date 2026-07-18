@@ -1,7 +1,6 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
-import AIWorkflow from '@/components/AIWorkflow'
 import Projects from '@/components/Projects'
 import Skills from '@/components/Skills'
 import Timeline from '@/components/Timeline'
@@ -15,7 +14,6 @@ export default function Home() {
       <main id="main" className="overflow-x-hidden">
         <Hero />
         <About />
-        <AIWorkflow />
         <Projects />
         <Skills />
         <Timeline />

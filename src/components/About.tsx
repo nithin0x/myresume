@@ -22,7 +22,7 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative py-28 px-6 bg-[#07070e] overflow-hidden"
+      className="relative py-20 md:py-28 px-6 bg-[#07070e] overflow-hidden"
     >
       <div className="absolute inset-0 cyber-grid" aria-hidden="true" />
       <div
@@ -55,7 +55,9 @@ export default function About() {
               <span className="text-ink-hi">(PJPT)</span> — currently preparing for{' '}
               <span className="text-[#8f4bff] font-semibold">SC-500</span>. Day to day, I run
               threat modeling, vulnerability assessment, secure code review, and incident
-              response aligned with NIST 800-53, NIST CSF, and ISO 27001.
+              response aligned with NIST 800-53, NIST CSF, and ISO 27001. I use{' '}
+              <span className="text-ink-hi">Claude</span> to speed up the repetitive parts —
+              recon triage, log analysis, report drafts — every finding verified by hand.
             </p>
             <p className="text-ink-mid leading-relaxed">
               Off the clock: a self-hosted attack/defense lab, HackSmarter, Hack The Box,
@@ -109,9 +111,6 @@ export default function About() {
                   ,{'\n  '}
                   <span className="text-[#8f4bff]">&quot;next_cert&quot;</span>:{' '}
                   <span className="text-yellow-400/80">&quot;SC-500&quot;</span>,
-                  {'\n  '}
-                  <span className="text-[#8f4bff]">&quot;ai_augmented&quot;</span>:{' '}
-                  <span className="text-[#00ff41]">true</span>,
                   {'\n  '}
                   <span className="text-[#8f4bff]">&quot;available&quot;</span>:{' '}
                   <span className="text-[#00ff41]">true</span>
