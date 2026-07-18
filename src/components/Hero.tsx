@@ -41,7 +41,7 @@ function DecodedName() {
 
   return (
     <h1
-      className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-5 leading-none tracking-tight ${
+      className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-5 leading-none tracking-tight ${
         done ? 'glitch' : ''
       }`}
       data-text={NAME}
@@ -65,7 +65,7 @@ export default function Hero() {
     <section
       id="hero"
       aria-label="Introduction"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-24"
     >
       <MatrixRain />
 
@@ -121,9 +121,8 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="text-base md:text-lg text-ink-mid max-w-2xl mx-auto mb-11 leading-relaxed"
         >
-          Red team mindset. Blue team discipline.{' '}
-          <span className="text-ink-hi">AI-accelerated execution.</span> I find the attack
-          paths in cloud and enterprise environments — then close them.
+          Red team mindset. Blue team discipline. I find the attack paths in cloud and
+          enterprise environments — <span className="text-ink-hi">then close them.</span>
         </motion.p>
 
         {/* CTAs */}
@@ -131,12 +130,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.85 }}
-          className="flex flex-wrap gap-4 justify-center mb-12"
+          className="flex flex-col sm:flex-row items-center gap-4 justify-center mb-12"
         >
-          <a href="#ai-workflow" className="btn-primary">
-            See How I Work
+          <a href="#projects" className="btn-primary w-full sm:w-auto">
+            View My Work
           </a>
-          <a href="#contact" className="btn-outline">
+          <a href="#contact" className="btn-outline w-full sm:w-auto">
             ./connect.sh
           </a>
         </motion.div>
@@ -184,7 +183,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 1.5 }}
         aria-hidden="true"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
       >
         <span className="font-mono text-[10px] text-ink-low tracking-[0.25em]">SCROLL</span>
         <motion.div

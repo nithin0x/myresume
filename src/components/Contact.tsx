@@ -43,7 +43,7 @@ export default function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative py-28 px-6 bg-[#030306] overflow-hidden"
+      className="relative py-20 md:py-28 px-6 bg-[#030306] overflow-hidden"
     >
       <div className="absolute inset-0 dot-grid" aria-hidden="true" />
       <div
@@ -60,7 +60,7 @@ export default function Contact() {
           className="text-center mb-14"
         >
           <p className="section-label">
-            <span className="section-index">06 //</span> $ ./connect.sh
+            <span className="section-index">05 //</span> $ ./connect.sh
           </p>
           <h2 id="contact-heading" className="text-4xl md:text-5xl font-display font-bold mt-2 mb-5">
             Let&apos;s <span className="text-gradient">Connect</span>

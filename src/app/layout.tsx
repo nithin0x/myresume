@@ -23,7 +23,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
   description:
-    'Cybersecurity analyst with 2+ years securing AWS, Azure, and M365 environments. CRTP · CWES · PJPT · AZ-900 certified. Red team mindset, blue team discipline, AI-accelerated workflow.',
+    'Cybersecurity analyst with 2+ years securing AWS, Azure, and M365 environments. CRTP · CWES · PJPT · AZ-900 certified. Red team mindset, blue team discipline.',
   keywords: [
     'cybersecurity',
     'penetration testing',
@@ -35,14 +35,13 @@ export const metadata: Metadata = {
     'Azure',
     'AWS',
     'M365',
-    'AI security',
     'Nithin Kumar',
   ],
   authors: [{ name: 'Nithin Kumar M', url: 'https://nithin0x.space' }],
   openGraph: {
     title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
     description:
-      'Red team mindset. Blue team discipline. AI-accelerated execution.',
+      'Red team mindset. Blue team discipline. Cloud and enterprise security.',
     type: 'website',
     url: 'https://portfolio.nithin0x.space',
     siteName: 'Nithin Kumar M',
@@ -51,9 +50,17 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
     description:
-      'Red team mindset. Blue team discipline. AI-accelerated execution.',
+      'Red team mindset. Blue team discipline. Cloud and enterprise security.',
   },
   metadataBase: new URL('https://portfolio.nithin0x.space'),
+  icons: {
+    icon: '/favicon.svg',
+  },
+  other: {
+    // Site ships its own dark theme; stops Dark Reader from rewriting
+    // inline styles pre-hydration and breaking React hydration.
+    'darkreader-lock': '',
+  },
 }
 
 const personSchema = {
@@ -84,7 +91,7 @@ const personSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} bg-bg-0 text-ink-hi font-sans antialiased`}
       >

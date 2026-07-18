@@ -98,7 +98,7 @@ export default function Timeline() {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="relative py-28 px-6 bg-[#07070e] overflow-hidden"
+      className="relative py-20 md:py-28 px-6 bg-[#07070e] overflow-hidden"
     >
       <div className="absolute inset-0 cyber-grid" aria-hidden="true" />
       <div
@@ -115,7 +115,7 @@ export default function Timeline() {
           className="mb-14"
         >
           <p className="section-label">
-            <span className="section-index">05 //</span> $ git log --oneline
+            <span className="section-index">04 //</span> $ git log --oneline
           </p>
           <h2 id="experience-heading" className="text-4xl md:text-5xl font-display font-bold mt-2">
             Experience &amp; <span className="text-gradient">Timeline</span>
@@ -123,7 +123,7 @@ export default function Timeline() {
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-6 top-1 bottom-0 w-px timeline-line" aria-hidden="true" />
+          <div className="absolute left-5 sm:left-6 top-1 bottom-0 w-px timeline-line" aria-hidden="true" />
 
           <ol className="space-y-8 list-none">
             {items.map((item, i) => {
@@ -135,17 +135,17 @@ export default function Timeline() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.15 }}
                   transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="relative pl-16"
+                  className="relative pl-14 sm:pl-16"
                 >
                   <div
-                    className="absolute left-0 top-1 w-12 h-12 rounded border flex items-center justify-center bg-[#030306]"
+                    className="absolute left-0 top-1 w-10 h-10 sm:w-12 sm:h-12 rounded border flex items-center justify-center bg-[#030306]"
                     style={{ borderColor: `${item.color}35` }}
                     aria-hidden="true"
                   >
                     <Icon className="w-5 h-5" style={{ color: item.color }} />
                   </div>
 
-                  <div className="hud-card p-6">
+                  <div className="hud-card p-4 sm:p-6">
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                       <div>
                         <h3 className="font-display font-bold text-ink-hi text-lg leading-tight">

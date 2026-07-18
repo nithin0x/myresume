@@ -18,17 +18,17 @@ type Project = {
 const projects: Project[] = [
   {
     icon: Cpu,
-    title: 'Agentic AI Security Research',
-    subtitle: 'Claude-powered attack-path analysis',
+    title: 'Security Automation Toolkit',
+    subtitle: 'Hardening & compliance tooling',
     href: null,
     description:
-      'Multi-step agentic workflows that automate reconnaissance, correlate BloodHound data, and synthesise attack chains across complex enterprise environments — with a human owning every conclusion.',
-    tags: ['Claude Agents', 'BloodHound', 'Attack Paths', 'Automation'],
+      'PowerShell and Python tooling for CIS-aligned hardening, M365 compliance checks, and configuration drift reporting — repeatable, versioned like code, and validated in the lab before it touches production.',
+    tags: ['PowerShell', 'Python', 'CIS Benchmarks', 'M365'],
     accent: '#8f4bff',
     hud: 'hud-purple',
     meta: [
-      { label: 'stack', value: 'Claude + Python' },
-      { label: 'type', value: 'Research' },
+      { label: 'stack', value: 'PowerShell + Python' },
+      { label: 'type', value: 'Tooling' },
     ],
   },
   {
@@ -83,7 +83,7 @@ export default function Projects() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative py-28 px-6 bg-[#07070e] overflow-hidden"
+      className="relative py-20 md:py-28 px-6 bg-[#07070e] overflow-hidden"
     >
       <div className="absolute inset-0 cyber-grid" aria-hidden="true" />
       <div
@@ -100,7 +100,7 @@ export default function Projects() {
           className="mb-14"
         >
           <p className="section-label">
-            <span className="section-index">03 //</span> $ ls -la ./projects/
+            <span className="section-index">02 //</span> $ ls -la ./projects/
           </p>
           <h2 id="projects-heading" className="text-4xl md:text-5xl font-display font-bold mt-2">
             Projects &amp; <span className="text-gradient">Community</span>
@@ -115,7 +115,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`hud-card ${project.hud} p-7 group flex flex-col`}
+              className={`hud-card ${project.hud} p-5 sm:p-7 group flex flex-col`}
             >
               <div className="flex items-start justify-between mb-5">
                 <div className="flex items-center gap-3">

@@ -91,7 +91,7 @@ const categories: Category[] = [
       'Bash',
       'Automation Scripting',
       'Security Tooling',
-      'Claude Code',
+      'AI-Assisted Workflows (Claude)',
     ],
   },
   {
@@ -143,7 +143,7 @@ export default function Skills() {
     <section
       id="skills"
       aria-labelledby="skills-heading"
-      className="relative py-28 px-6 bg-[#030306] overflow-hidden"
+      className="relative py-20 md:py-28 px-6 bg-[#030306] overflow-hidden"
     >
       <div className="absolute inset-0 dot-grid" aria-hidden="true" />
       <div
@@ -160,7 +160,7 @@ export default function Skills() {
           className="mb-14"
         >
           <p className="section-label">
-            <span className="section-index">04 //</span> $ cat skills.json | jq
+            <span className="section-index">03 //</span> $ cat skills.json | jq
           </p>
           <h2 id="skills-heading" className="text-4xl md:text-5xl font-display font-bold mt-2">
             Skills &amp; <span className="text-gradient">Expertise</span>
