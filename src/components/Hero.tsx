@@ -58,7 +58,7 @@ const socials = [
   { href: 'https://nithin0x.space', icon: Globe, label: 'Blog' },
 ]
 
-const certs = ['CRTP', 'CWES', 'PJPT', 'AZ-900', 'Google Cybersecurity']
+const certs = ['CRTP', 'CWES', 'PJPT', 'AZ-104', 'Google Cybersecurity']
 
 export default function Hero() {
   return (

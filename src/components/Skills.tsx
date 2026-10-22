@@ -133,7 +133,7 @@ const categories: Category[] = [
 const certs = [
   { name: 'CRTP', issuer: 'Altered Security', year: '2026', color: '#8f4bff' },
   { name: 'CWES', issuer: 'HTB Academy', year: '2026', color: '#00ff41' },
-  { name: 'AZ-900', issuer: 'Microsoft', year: '2026', color: '#00d4ff' },
+  { name: 'AZ-104', issuer: 'Microsoft', year: '2026', color: '#00d4ff' },
   { name: 'PJPT', issuer: 'TCM Security', year: '2025', color: '#00d4ff' },
   { name: 'Google Cyber', issuer: 'Google / Coursera', year: '2023', color: '#00ff41' },
 ]
