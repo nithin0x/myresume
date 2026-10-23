@@ -1,29 +1,23 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
+import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
+const instrument = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
 })
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-})
-
-const spaceGrotesk = Space_Grotesk({
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
+  title: 'Nithin Kumar M: Cybersecurity Analyst & Penetration Tester',
   description:
-    'Cybersecurity analyst with 2+ years securing AWS, Azure, and M365 environments. CRTP · CWES · PJPT · AZ-900 · AZ-104 certified. Red team mindset, blue team discipline.',
+    'Cybersecurity analyst securing AWS, Azure, and M365 environments. Certified in CRTP, CWES, MCRTA, PJPT, AZ-900, and AZ-104.',
   keywords: [
     'cybersecurity',
     'penetration testing',
@@ -39,25 +33,25 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Nithin Kumar M', url: 'https://nithin0x.space' }],
   openGraph: {
-    title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
+    title: 'Nithin Kumar M: Cybersecurity Analyst & Penetration Tester',
     description:
-      'Red team mindset. Blue team discipline. Cloud and enterprise security.',
+      'Cloud and enterprise security assessments, penetration testing, and infrastructure hardening.',
     type: 'website',
     url: 'https://portfolio.nithin0x.space',
     siteName: 'Nithin Kumar M',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
+    title: 'Nithin Kumar M: Cybersecurity Analyst & Penetration Tester',
     description:
-      'Red team mindset. Blue team discipline. Cloud and enterprise security.',
+      'Cloud and enterprise security assessments, penetration testing, and infrastructure hardening.',
   },
   metadataBase: new URL('https://portfolio.nithin0x.space'),
   icons: {
     icon: '/favicon.svg',
   },
   other: {
-    // Site ships its own dark theme; stops Dark Reader from rewriting
+    // Site ships its own theme; stops Dark Reader from rewriting
     // inline styles pre-hydration and breaking React hydration.
     'darkreader-lock': '',
   },
@@ -91,10 +85,8 @@ const personSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} bg-bg-0 text-ink-hi font-sans antialiased`}
-      >
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${instrument.variable} ${bricolage.variable}`}>
         <a href="#main" className="skip-link">
           Skip to content
         </a>
