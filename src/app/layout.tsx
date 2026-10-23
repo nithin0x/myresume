@@ -23,7 +23,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Nithin Kumar M — Cybersecurity Analyst & Penetration Tester',
   description:
-    'Cybersecurity analyst with 2+ years securing AWS, Azure, and M365 environments. CRTP · CWES · PJPT · AZ-900 certified. Red team mindset, blue team discipline.',
+    'Cybersecurity analyst with 2+ years securing AWS, Azure, and M365 environments. CRTP · CWES · PJPT · AZ-900 · AZ-104 certified. Red team mindset, blue team discipline.',
   keywords: [
     'cybersecurity',
     'penetration testing',
