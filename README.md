@@ -6,7 +6,9 @@ Built with Next.js and Tailwind CSS. Published to portfolio.nithin0x.space throu
 
 ## Local development
 
-    npm install
+Use Node.js 22, matching CI, and install the locked dependencies:
+
+    npm ci
     npm run dev
 
 ## Checks
@@ -15,6 +17,10 @@ Built with Next.js and Tailwind CSS. Published to portfolio.nithin0x.space throu
     npm run build
 
 The production build exports the site to `out/` for GitHub Pages.
+
+Pull requests to `main` run the production build without deploying. Pushes to `main` and manual runs on `main` build and deploy the exported site. In the repository's **Settings → Pages**, set **Source** to **GitHub Actions**, not branch-based publishing.
+
+Tailwind stays on version 3 because the stylesheet and PostCSS plugin configuration use its version 3 API.
 
 ## Design
 
