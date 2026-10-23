@@ -20,7 +20,7 @@ The first pass identified slogan headings, repeated credentials, descriptive fra
 
 The second pass reviewed all rendered copy against the original and scanned for contrasts, dramatic closers, forced triads, inflated claims, dashes, and decorative labels. Technical lists with three distinct entries were retained. No new achievements, credentials, dates, metrics, or project outcomes were added.
 
-Both jobs, both degrees and GPAs, all seven certifications, credential dates and URLs, named tools and frameworks, and SC-500 study status remain. Existing employment dates were preserved. Full certificate names and month/year dates previously in the timeline were moved into the central certification records. CWES and AZ-104 still have no verification URL; none was invented.
+Both jobs, both degrees and GPAs, all seven certifications, credential dates and URLs, named tools and frameworks, and SC-500 study status remain. Existing employment dates were preserved. Full certificate names and month/year dates previously in the timeline were moved into the central certification records. At this initial review, CWES and AZ-104 had no verification URL. The subsequent [design update](scrimba-design-update.md) adds the user-provided AZ-104 link; CWES still has no verification URL.
 
 ## Content and implementation
 

@@ -41,3 +41,5 @@ The homepage has a canonical URL and linked Person/ProfilePage JSON-LD. `robots.
 `npm run check:export` checks the exported HTML, fragment links, local assets, structured data references, crawler files, social image, and 404 indexability. ESLint uses the Next.js accessibility and Core Web Vitals rules.
 
 See [the optimization audit](docs/portfolio-audit.md) for the editorial review, browser checks, measurements, and hosting limitation.
+
+The [Scrimba-inspired design update](docs/scrimba-design-update.md) documents the sidebar layout, LinkedIn-sourced additions, and verified AZ-104 credential.

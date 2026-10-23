@@ -1,3 +1,4 @@
+import { languages, practicePlatforms } from '@/data/profile'
 import SectionHeading from './SectionHeading'
 
 export default function About() {
@@ -12,13 +13,20 @@ export default function About() {
           </p>
           <p>
             I use LLMs for log analysis, recon triage, and report drafts, then verify every finding
-            manually. I also practice on Hack The Box, PortSwigger Web Security Academy, and Vulnlab,
-            and I’m studying for SC-500.
+            manually. I’m currently studying for SC-500 and exploring how cloud and AI relate to
+            systems engineering and security.
           </p>
           <p>
             On r/netsec, r/AskNetsec, and security Discord servers, I discuss offensive security
-            methods and share reproducible steps.
+            methods, mentor other learners, and share reproducible steps. Outside the lab, I tinker
+            with my i3 setup on Debian Linux.
           </p>
+          <dl className="about-details">
+            <div><dt>Lab practice</dt><dd>{practicePlatforms.join(', ')}.</dd></div>
+            <div><dt>Languages</dt><dd><ul>{languages.map(({ name, proficiency }) => (
+              <li key={name}>{name} <span>({proficiency})</span></li>
+            ))}</ul></dd></div>
+          </dl>
         </div>
       </div>
     </section>
