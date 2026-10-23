@@ -133,6 +133,7 @@ const categories: Category[] = [
 const certs = [
   { name: 'CRTP', issuer: 'Altered Security', year: '2026', color: '#8f4bff' },
   { name: 'CWES', issuer: 'HTB Academy', year: '2026', color: '#00ff41' },
+  { name: 'AZ-900', issuer: 'Microsoft', year: '2026', color: '#00d4ff' },
   { name: 'AZ-104', issuer: 'Microsoft', year: '2026', color: '#00d4ff' },
   { name: 'PJPT', issuer: 'TCM Security', year: '2025', color: '#00d4ff' },
   { name: 'Google Cyber', issuer: 'Google / Coursera', year: '2023', color: '#00ff41' },
@@ -213,7 +214,7 @@ export default function Skills() {
           className="mt-14"
         >
           <p className="section-label mb-4">$ ls ./certifications/</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {certs.map((cert) => (
               <div
                 key={cert.name}

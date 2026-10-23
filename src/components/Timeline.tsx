@@ -26,9 +26,9 @@ const items: TimelineItem[] = [
   {
     date: '2026',
     type: 'cert',
-    title: 'CRTP · CWES · AZ-104',
+    title: 'CRTP · CWES · AZ-900 · AZ-104',
     org: 'Altered Security · HTB Academy · Microsoft',
-    tags: ['Active Directory', 'Web Exploitation', 'Azure Administration'],
+    tags: ['Active Directory', 'Web Exploitation', 'Azure Fundamentals', 'Azure Administration'],
     color: '#00d4ff',
   },
   {
