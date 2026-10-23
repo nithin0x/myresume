@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google'
 import './globals.css'
+import { profile } from '@/data/profile'
 
 const instrument = Instrument_Sans({
   subsets: ['latin'],
@@ -15,72 +16,27 @@ const bricolage = Bricolage_Grotesque({
 })
 
 export const metadata: Metadata = {
-  title: 'Nithin Kumar M: Cybersecurity Analyst & Penetration Tester',
-  description:
-    'Cybersecurity analyst securing AWS, Azure, and M365 environments. Certified in CRTP, CWES, MCRTA, PJPT, AZ-900, and AZ-104.',
-  keywords: [
-    'cybersecurity',
-    'penetration testing',
-    'cloud security',
-    'CRTP',
-    'CWES',
-    'red team',
-    'blue team',
-    'Azure',
-    'AWS',
-    'M365',
-    'Nithin Kumar',
-  ],
-  authors: [{ name: 'Nithin Kumar M', url: 'https://nithin0x.space' }],
+  metadataBase: new URL(profile.url),
+  title: profile.title,
+  description: profile.description,
+  authors: [{ name: profile.name, url: profile.url }],
   openGraph: {
-    title: 'Nithin Kumar M: Cybersecurity Analyst & Penetration Tester',
-    description:
-      'Cloud and enterprise security assessments, penetration testing, and infrastructure hardening.',
+    title: profile.title,
+    description: profile.description,
     type: 'website',
-    url: 'https://portfolio.nithin0x.space',
-    siteName: 'Nithin Kumar M',
+    url: profile.url,
+    siteName: profile.name,
+    locale: 'en_IN',
+    images: [{ url: '/social.png', width: 1200, height: 630, alt: `${profile.name}, cybersecurity analyst and penetration tester` }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nithin Kumar M: Cybersecurity Analyst & Penetration Tester',
-    description:
-      'Cloud and enterprise security assessments, penetration testing, and infrastructure hardening.',
+    title: profile.title,
+    description: profile.description,
+    images: [{ url: '/social.png', alt: `${profile.name}, cybersecurity analyst and penetration tester` }],
   },
-  metadataBase: new URL('https://portfolio.nithin0x.space'),
-  icons: {
-    icon: '/favicon.svg',
-  },
-  other: {
-    // Site ships its own theme; stops Dark Reader from rewriting
-    // inline styles pre-hydration and breaking React hydration.
-    'darkreader-lock': '',
-  },
-}
-
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Nithin Kumar M',
-  jobTitle: 'Cybersecurity Analyst',
-  worksFor: { '@type': 'Organization', name: 'TiQHUB, LLC' },
-  url: 'https://portfolio.nithin0x.space',
-  sameAs: [
-    'https://linkedin.com/in/cybernithin',
-    'https://github.com/nithin0x',
-    'https://nithin0x.space',
-  ],
-  knowsAbout: [
-    'Penetration Testing',
-    'Cloud Security',
-    'Active Directory Security',
-    'Incident Response',
-    'Security Automation',
-  ],
-  address: {
-    '@type': 'PostalAddress',
-    addressRegion: 'Tamil Nadu',
-    addressCountry: 'IN',
-  },
+  icons: { icon: '/favicon.svg' },
+  other: { 'darkreader-lock': '' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -91,12 +47,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personSchema).replace(/</g, '\\u003c'),
-          }}
-        />
       </body>
     </html>
   )
