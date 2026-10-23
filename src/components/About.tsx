@@ -5,7 +5,7 @@ import { Shield, Award, Cloud, FlaskConical } from 'lucide-react'
 
 const stats = [
   { label: 'Years in Security', value: '2+', icon: Shield, color: '#00d4ff' },
-  { label: 'Certifications', value: '5', icon: Award, color: '#8f4bff' },
+  { label: 'Certifications', value: '6', icon: Award, color: '#8f4bff' },
   { label: 'Cloud Platforms', value: '3', icon: Cloud, color: '#00ff41' },
   { label: 'Home Lab', value: '24/7', icon: FlaskConical, color: '#00d4ff' },
 ]
