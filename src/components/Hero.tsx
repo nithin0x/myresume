@@ -1,198 +1,62 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Globe } from 'lucide-react'
-import MatrixRain from './MatrixRain'
-
-const NAME = 'Nithin Kumar M'
-const SCRAMBLE = '!<>-_\\/[]{}—=+*^?#01'
-
-function DecodedName() {
-  const reducedMotion = useReducedMotion()
-  const [display, setDisplay] = useState('')
-  const [done, setDone] = useState(false)
-
-  useEffect(() => {
-    if (reducedMotion) {
-      setDisplay(NAME)
-      setDone(true)
-      return
-    }
-    let frame = 0
-    const totalFrames = 34
-    const interval = setInterval(() => {
-      frame++
-      const progress = frame / totalFrames
-      const revealed = Math.floor(NAME.length * progress)
-      let out = NAME.slice(0, revealed)
-      for (let i = revealed; i < NAME.length; i++) {
-        out += NAME[i] === ' ' ? ' ' : SCRAMBLE[Math.floor(Math.random() * SCRAMBLE.length)]
-      }
-      setDisplay(out)
-      if (frame >= totalFrames) {
-        setDisplay(NAME)
-        setDone(true)
-        clearInterval(interval)
-      }
-    }, 42)
-    return () => clearInterval(interval)
-  }, [reducedMotion])
-
-  return (
-    <h1
-      className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-5 leading-none tracking-tight ${
-        done ? 'glitch' : ''
-      }`}
-      data-text={NAME}
-      aria-label={NAME}
-    >
-      <span aria-hidden="true">{display || ' '}</span>
-    </h1>
-  )
-}
-
-const socials = [
-  { href: 'https://linkedin.com/in/cybernithin', icon: Linkedin, label: 'LinkedIn' },
-  { href: 'https://github.com/nithin0x', icon: Github, label: 'GitHub' },
-  { href: 'https://nithin0x.space', icon: Globe, label: 'Blog' },
-]
-
-const certs = ['CRTP', 'CWES', 'PJPT', 'AZ-900', 'AZ-104', 'Google Cybersecurity']
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { certifications, socials } from '@/data/profile'
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      aria-label="Introduction"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-24"
-    >
-      <MatrixRain />
+    <section id="hero" aria-labelledby="hero-heading" className="hero">
+      <div className="page-shell">
+        <div className="hero-topline">
+          <p className="eyebrow">Cybersecurity / Offensive & defensive</p>
+          <p className="eyebrow hero-location">Tamil Nadu, India</p>
+        </div>
 
-      {/* Glow overlays */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(0,212,255,0.08),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_85%_85%,rgba(143,75,255,0.06),transparent)]" />
-      <div className="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-[#030306] to-transparent" />
+        <h1 id="hero-heading" className="hero-name">Nithin <span>Kumar M.</span></h1>
 
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        {/* Status badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mb-7 inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[rgba(0,255,65,0.25)] bg-[rgba(0,255,65,0.05)]"
-        >
-          <span className="w-2 h-2 rounded-full bg-[#00ff41] animate-pulse" aria-hidden="true" />
-          <span className="font-mono text-[#00ff41] text-xs tracking-[0.2em]">
-            SYSTEM ONLINE · OPEN TO OPPORTUNITIES
-          </span>
-        </motion.div>
+        <div className="hero-bottom">
+          <div>
+            <p className="hero-role">Cybersecurity analyst.<br />Penetration tester.</p>
+            <p className="hero-intro">
+              I find attack paths in cloud and enterprise systems, test them in the lab,
+              and fix the configurations behind them.
+            </p>
+            <div className="hero-actions">
+              <a href="#projects" className="btn btn-primary">Explore my work <ArrowUpRight aria-hidden="true" /></a>
+              <a href="#contact" className="text-link">Get in touch <ArrowUpRight aria-hidden="true" /></a>
+            </div>
+            <nav className="hero-socials" aria-label="Social profiles">
+              {socials.map(({ href, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="text-link">
+                  {label}<ArrowUpRight aria-hidden="true" />
+                </a>
+              ))}
+            </nav>
+          </div>
 
-        {/* Name */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-        >
-          <DecodedName />
-        </motion.div>
+          <figure className="lab-figure dark-section" aria-labelledby="lab-caption">
+            <p className="eyebrow">Inside the lab <span>Attack / Defend</span></p>
+            <svg viewBox="0 0 400 200" fill="none" aria-hidden="true">
+              <path d="M72 100H176M224 100H328M200 32V76M200 124V168" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M72 100L200 32L328 100L200 168L72 100Z" stroke="currentColor" strokeDasharray="3 6" />
+              <circle cx="200" cy="100" r="24" fill="#f5f3ed" />
+              <path d="M191 100L198 107L210 94" stroke="#232420" strokeWidth="2" />
+              <rect x="48" y="76" width="48" height="48" rx="24" fill="#373831" />
+              <rect x="304" y="76" width="48" height="48" rx="24" fill="#373831" />
+              <circle cx="200" cy="32" r="16" fill="#373831" />
+              <circle cx="200" cy="168" r="16" fill="#373831" />
+              <text x="72" y="105" textAnchor="middle" fill="#f5f3ed" fontSize="12" fontFamily="inherit">AD</text>
+              <text x="328" y="105" textAnchor="middle" fill="#f5f3ed" fontSize="12" fontFamily="inherit">Cloud</text>
+              <text x="200" y="36" textAnchor="middle" fill="#f5f3ed" fontSize="9" fontFamily="inherit">API</text>
+              <text x="200" y="172" textAnchor="middle" fill="#f5f3ed" fontSize="9" fontFamily="inherit">Web</text>
+            </svg>
+            <figcaption id="lab-caption"><span>Self-hosted research environment</span><span>01 / Lab</span></figcaption>
+          </figure>
+        </div>
 
-        {/* Role */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="text-lg md:text-2xl font-mono text-[#00d4ff] tracking-wide mb-6"
-        >
-          <span className="text-[#00ff41]" aria-hidden="true">
-            ~${' '}
-          </span>
-          Cybersecurity Analyst
-          <span className="text-ink-low mx-3" aria-hidden="true">
-            |
-          </span>
-          Penetration Tester
-        </motion.p>
-
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-base md:text-lg text-ink-mid max-w-2xl mx-auto mb-11 leading-relaxed"
-        >
-          Red team mindset. Blue team discipline. I find the attack paths in cloud and
-          enterprise environments — <span className="text-ink-hi">then close them.</span>
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.85 }}
-          className="flex flex-col sm:flex-row items-center gap-4 justify-center mb-12"
-        >
-          <a href="#projects" className="btn-primary w-full sm:w-auto">
-            View My Work
-          </a>
-          <a href="#contact" className="btn-outline w-full sm:w-auto">
-            ./connect.sh
-          </a>
-        </motion.div>
-
-        {/* Socials */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="flex gap-5 justify-center"
-        >
-          {socials.map(({ href, icon: Icon, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="w-10 h-10 rounded border border-[rgba(0,212,255,0.22)] flex items-center justify-center text-ink-mid hover:text-[#00d4ff] hover:border-[#00d4ff] hover:shadow-[0_0_14px_rgba(0,212,255,0.25)] transition-all duration-300"
-            >
-              <Icon className="w-4 h-4" aria-hidden="true" />
-            </a>
-          ))}
-        </motion.div>
+        <div className="hero-foot">
+          <p className="hero-credentials"><span>Certifications</span>{certifications.map((cert) => cert.name).join(' · ')}</p>
+          <a href="#about" className="text-link scroll-link">A little background <ArrowDown aria-hidden="true" /></a>
+        </div>
       </div>
-
-      {/* Cert badges */}
-      <motion.ul
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.15 }}
-        aria-label="Certifications"
-        className="relative z-10 flex flex-wrap gap-2 justify-center mt-11 px-6 list-none"
-      >
-        {certs.map((cert) => (
-          <li key={cert} className="tag-purple tag">
-            {cert}
-          </li>
-        ))}
-      </motion.ul>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.5 }}
-        aria-hidden="true"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
-      >
-        <span className="font-mono text-[10px] text-ink-low tracking-[0.25em]">SCROLL</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ArrowDown className="w-4 h-4 text-[#00d4ff]" />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }

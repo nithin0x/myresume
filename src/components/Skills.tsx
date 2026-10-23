@@ -1,25 +1,16 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { Swords, Cloud, ScrollText, Code2, Radar, Users } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
+import { certifications } from '@/data/profile'
+import SectionHeading from './SectionHeading'
 
 type Category = {
   title: string
-  icon: typeof Swords
-  color: string
-  tagClass: string
-  hud: string
   description: string
   skills: string[]
 }
 
 const categories: Category[] = [
   {
-    title: 'Offensive Security',
-    icon: Swords,
-    color: '#00d4ff',
-    tagClass: 'tag',
-    hud: '',
+    title: 'Offensive security',
     description: 'Exploitation, red team operations, and attack simulation',
     skills: [
       'Web App Pentesting',
@@ -39,12 +30,8 @@ const categories: Category[] = [
     ],
   },
   {
-    title: 'Cloud & Infrastructure',
-    icon: Cloud,
-    color: '#00ff41',
-    tagClass: 'tag tag-green',
-    hud: 'hud-green',
-    description: 'Securing multi-cloud enterprise environments',
+    title: 'Cloud & infrastructure',
+    description: 'AWS, Azure, identity, and endpoint security',
     skills: [
       'AWS Security',
       'Azure Security',
@@ -59,12 +46,8 @@ const categories: Category[] = [
     ],
   },
   {
-    title: 'Security Frameworks',
-    icon: ScrollText,
-    color: '#8f4bff',
-    tagClass: 'tag tag-purple',
-    hud: 'hud-purple',
-    description: 'GRC, compliance, and regulatory alignment',
+    title: 'Security frameworks',
+    description: 'Governance, risk management, and compliance standards',
     skills: [
       'NIST 800-53',
       'NIST CSF',
@@ -79,12 +62,8 @@ const categories: Category[] = [
     ],
   },
   {
-    title: 'Scripting & Automation',
-    icon: Code2,
-    color: '#00d4ff',
-    tagClass: 'tag',
-    hud: '',
-    description: 'Automating security operations and hardening',
+    title: 'Scripting & automation',
+    description: 'Scripts for security checks and hardening',
     skills: [
       'Python',
       'PowerShell',
@@ -95,11 +74,7 @@ const categories: Category[] = [
     ],
   },
   {
-    title: 'Security Operations',
-    icon: Radar,
-    color: '#00ff41',
-    tagClass: 'tag tag-green',
-    hud: 'hud-green',
+    title: 'Security operations',
     description: 'Detection, response, and governance',
     skills: [
       'Threat Modeling',
@@ -113,30 +88,16 @@ const categories: Category[] = [
     ],
   },
   {
-    title: 'Communication',
-    icon: Users,
-    color: '#8f4bff',
-    tagClass: 'tag tag-purple',
-    hud: 'hud-purple',
-    description: 'Collaboration and leadership',
+    title: 'Collaboration & delivery',
+    description: 'Working with engineering and IT teams',
     skills: [
-      'Technical Writing',
-      'Leadership',
-      'Cross-functional Collaboration',
-      'Problem Solving',
-      'Analytical Thinking',
-      'Project Management',
+      'Technical Documentation',
+      'Incident Reporting',
+      'Cross-Team Coordination',
+      'Project Tracking',
+      'Security Guidance',
     ],
   },
-]
-
-const certs = [
-  { name: 'CRTP', issuer: 'Altered Security', year: '2026', color: '#8f4bff' },
-  { name: 'CWES', issuer: 'HTB Academy', year: '2026', color: '#00ff41' },
-  { name: 'AZ-900', issuer: 'Microsoft', year: '2026', color: '#00d4ff' },
-  { name: 'AZ-104', issuer: 'Microsoft', year: '2026', color: '#00d4ff' },
-  { name: 'PJPT', issuer: 'TCM Security', year: '2025', color: '#00d4ff' },
-  { name: 'Google Cyber', issuer: 'Google / Coursera', year: '2023', color: '#00ff41' },
 ]
 
 export default function Skills() {
@@ -144,96 +105,39 @@ export default function Skills() {
     <section
       id="skills"
       aria-labelledby="skills-heading"
-      className="relative py-20 md:py-28 px-6 bg-[#030306] overflow-hidden"
+      className="section"
     >
-      <div className="absolute inset-0 dot-grid" aria-hidden="true" />
-      <div
-        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[rgba(143,75,255,0.04)] blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="mb-14"
-        >
-          <p className="section-label">
-            <span className="section-index">03 //</span> $ cat skills.json | jq
-          </p>
-          <h2 id="skills-heading" className="text-4xl md:text-5xl font-display font-bold mt-2">
-            Skills &amp; <span className="text-gradient">Expertise</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((cat, i) => (
-            <motion.div
-              key={cat.title}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-              className={`hud-card ${cat.hud} p-6`}
-            >
-              <div className="mb-4">
-                <div className="flex items-center gap-2.5 mb-1.5">
-                  <div
-                    className="w-8 h-8 rounded flex items-center justify-center"
-                    style={{ background: `${cat.color}16` }}
-                    aria-hidden="true"
-                  >
-                    <cat.icon className="w-4 h-4" style={{ color: cat.color }} />
-                  </div>
-                  <h3 className="font-display font-bold text-base" style={{ color: cat.color }}>
-                    {cat.title}
-                  </h3>
-                </div>
-                <p className="text-ink-low text-xs font-mono">{cat.description}</p>
-              </div>
-
-              <ul className="flex flex-wrap gap-2 list-none">
-                {cat.skills.map((skill) => (
-                  <li key={skill} className={cat.tagClass}>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-14"
-        >
-          <p className="section-label mb-4">$ ls ./certifications/</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {certs.map((cert) => (
-              <div
-                key={cert.name}
-                aria-label={`${cert.name} — ${cert.issuer}, ${cert.year}`}
-                className="border rounded p-4 text-center transition-transform duration-300 hover:-translate-y-1"
-                style={{ borderColor: `${cert.color}25`, background: `${cert.color}08` }}
-              >
-                <div
-                  className="text-lg font-display font-bold mb-1"
-                  style={{ color: cert.color }}
-                >
-                  {cert.name}
-                </div>
-                <div className="text-[10px] text-ink-low font-mono">{cert.issuer}</div>
-                <div className="text-[10px] text-ink-low font-mono mt-0.5">{cert.year}</div>
+      <div className="page-shell">
+        <SectionHeading id="skills-heading" number="03" label="Capabilities">The working toolkit.</SectionHeading>
+        <div className="skills-layout">
+          <div className="skills-list">
+            {categories.map((cat) => (
+              <div key={cat.title} className="skill-category">
+                <h3>{cat.title}</h3>
+                <p>{cat.description}</p>
+                <ul className="skill-list">{cat.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul>
               </div>
             ))}
           </div>
-        </motion.div>
+          <aside className="credentials" aria-labelledby="credentials-heading">
+            <p className="eyebrow">Credentials / {String(certifications.length).padStart(2, '0')}</p>
+            <h3 id="credentials-heading">Certifications</h3>
+            <ul className="credential-list">
+              {certifications.map((cert) => (
+                <li key={cert.name}>
+                  <div className="credential-name">
+                    {cert.href ? (
+                      <a className="text-link" href={cert.href} target="_blank" rel="noopener noreferrer" aria-label={`${cert.name}, verify credential`}>
+                        {cert.name}<ArrowUpRight aria-hidden="true" />
+                      </a>
+                    ) : cert.name}
+                  </div>
+                  <p>{cert.issuer} · {cert.year}</p>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </div>
       </div>
     </section>
   )

@@ -1,172 +1,100 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
-import { Menu, X, Terminal } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 
 const links = [
-  { href: '#about', label: 'about' },
-  { href: '#projects', label: 'projects' },
-  { href: '#skills', label: 'skills' },
-  { href: '#experience', label: 'experience' },
-  { href: '#contact', label: 'contact' },
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Work' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' },
 ]
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
-
-  const { scrollYProgress } = useScroll()
-  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 25, restDelta: 0.001 })
+  const navRef = useRef<HTMLElement>(null)
+  const menuButton = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
-    const sections = links.map((l) => document.querySelector(l.href))
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
-        })
-      },
-      { rootMargin: '-40% 0px -55% 0px' }
-    )
-    sections.forEach((s) => s && observer.observe(s))
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+      })
+    }, { rootMargin: '-20% 0px -60% 0px' })
+    links.forEach(({ href }) => {
+      const section = document.querySelector(href)
+      if (section) observer.observe(section)
+    })
+    const hero = document.querySelector('#hero')
+    if (hero) observer.observe(hero)
     return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 768px)')
+    const closeOnDesktop = () => setOpen(false)
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => desktop.removeEventListener('change', closeOnDesktop)
+  }, [])
+
+  useEffect(() => {
     if (!open) return
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
         setOpen(false)
-        document.getElementById('mobile-menu-btn')?.focus()
+        menuButton.current?.focus()
       }
     }
+    const onPointer = (event: PointerEvent) => {
+      if (!navRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+    const onFocus = (event: FocusEvent) => {
+      if (!navRef.current?.contains(event.target as Node)) setOpen(false)
+    }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    window.addEventListener('pointerdown', onPointer)
+    window.addEventListener('focusin', onFocus)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('pointerdown', onPointer)
+      window.removeEventListener('focusin', onFocus)
+    }
   }, [open])
 
   return (
-    <>
-      <motion.nav
-        initial={{ y: -70, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.55, ease: 'easeOut' }}
-        aria-label="Primary"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-[#030306]/85 backdrop-blur-md border-b border-[rgba(148,163,184,0.1)]'
-            : 'bg-transparent'
-        }`}
-      >
-        {/* Scroll progress */}
-        <motion.div
-          aria-hidden="true"
-          className="absolute top-0 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-[#00ff41] via-[#00d4ff] to-[#8f4bff]"
-          style={{ scaleX: progress }}
-        />
-
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2.5 group" aria-label="Back to top">
-            <div className="w-9 h-9 rounded border border-[rgba(0,212,255,0.35)] flex items-center justify-center group-hover:border-[#00d4ff] group-hover:shadow-[0_0_16px_rgba(0,212,255,0.35)] transition-all duration-300">
-              <Terminal className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
-            </div>
-            <span className="font-mono text-sm font-semibold text-ink-hi group-hover:text-[#00d4ff] transition-colors">
-              nithin<span className="text-[#00ff41]">0x</span>
-            </span>
-          </a>
-
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-7">
-            {links.map((link, i) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={`font-mono text-[13px] transition-colors duration-200 relative ${
-                  active === link.href
-                    ? 'text-[#00d4ff]'
-                    : 'text-ink-mid hover:text-ink-hi'
-                }`}
-              >
-                <span className="text-[#00ff41] mr-1 text-[10px]" aria-hidden="true">
-                  0{i + 1}.
-                </span>
-                {link.label}
-                {active === link.href && (
-                  <motion.span
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1.5 left-0 right-0 h-px bg-[#00d4ff]"
-                  />
-                )}
-              </a>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-2 px-4 py-2 border border-[rgba(0,255,65,0.35)] text-[#00ff41] font-mono text-[13px] rounded hover:bg-[rgba(0,255,65,0.07)] hover:border-[#00ff41] transition-all duration-200"
-          >
-            ./hire_me
-          </a>
-
-          {/* Mobile menu button */}
-          <button
-            id="mobile-menu-btn"
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-ink-mid hover:text-ink-hi transition-colors p-1"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-          >
-            {open ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
-          </button>
+    <nav ref={navRef} aria-label="Primary" className={`site-nav${scrolled ? ' is-scrolled' : ''}`}>
+      <div className="page-shell nav-inner">
+        <a href="#hero" className="wordmark" aria-label="nithin0x, back to top" onClick={() => setOpen(false)}>nithin0x</a>
+        <div className="desktop-links">
+          {links.map(({ href, label }) => (
+            <a key={href} href={href} className="nav-link" aria-current={active === href ? 'location' : undefined}>{label}</a>
+          ))}
         </div>
-      </motion.nav>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[64px] z-40 bg-[#07070e]/95 backdrop-blur-md border-b border-[rgba(148,163,184,0.1)] md:hidden"
-          >
-            <div className="px-6 py-4 flex flex-col gap-1">
-              {links.map((link, i) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="font-mono text-sm text-ink-mid hover:text-[#00d4ff] transition-colors py-3 border-b border-[rgba(148,163,184,0.06)]"
-                >
-                  <span className="text-[#00ff41] mr-2" aria-hidden="true">
-                    0{i + 1}.
-                  </span>
-                  {link.label}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="btn-primary text-center mt-3 mb-1"
-              >
-                ./hire_me
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        <a href="#contact" className="btn btn-primary nav-cta">Let’s talk <ArrowUpRight aria-hidden="true" /></a>
+        <button ref={menuButton} id="mobile-menu-btn" className="menu-toggle" onClick={() => setOpen(!open)}
+          aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-menu">
+          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
+      </div>
+      <div id="mobile-menu" className="mobile-menu" hidden={!open}>
+        {links.map(({ href, label }) => (
+          <a key={href} href={href} className="nav-link" onClick={() => setOpen(false)}
+            aria-current={active === href ? 'location' : undefined}>{label}</a>
+        ))}
+        <a href="mailto:nithinkumar.m@protonmail.com" className="btn btn-primary" onClick={() => setOpen(false)}>
+          Email me <ArrowUpRight aria-hidden="true" />
+        </a>
+      </div>
+    </nav>
   )
 }
