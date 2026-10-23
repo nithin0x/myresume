@@ -43,6 +43,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${instrument.variable} ${bricolage.variable}`}>
+        <div className="bg-ambient-glow" aria-hidden="true">
+          <div className="ambient-orb ambient-orb-1" />
+          <div className="ambient-orb ambient-orb-2" />
+          <div className="ambient-orb ambient-orb-3" />
+        </div>
         <a href="#main" className="skip-link">
           Skip to content
         </a>

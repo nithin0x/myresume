@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
-import { profile, socials } from '@/data/profile'
+import { profile } from '@/data/profile'
+import PooLabCard from './PooLabCard'
 
 export default function Hero() {
   return (
@@ -18,17 +19,7 @@ export default function Hero() {
             <a href={`mailto:${profile.email}`} className="text-link">Email me <ArrowUpRight aria-hidden="true" /></a>
           </div>
         </div>
-        <aside className="hero-note" aria-labelledby="lab-note-heading">
-          <p className="eyebrow">Lab notes / Hack The Box</p>
-          <h2 id="lab-note-heading">P.O.O. attack chain</h2>
-          <p>
-            In the P.O.O. lab, I traced IIS misconfigurations through linked SQL Server instances
-            to domain compromise. The path also involved IPv6 exposure and Active Directory trusts.
-          </p>
-          <a href={socials[0].href} className="text-link" target="_blank" rel="noopener noreferrer">
-            Read my LinkedIn posts <ArrowUpRight aria-hidden="true" />
-          </a>
-        </aside>
+        <PooLabCard />
       </div>
     </section>
   )
