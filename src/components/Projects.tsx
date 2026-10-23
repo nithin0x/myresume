@@ -4,12 +4,13 @@ import { projects } from '@/data/projects'
 
 export default function Projects() {
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="section dark-section">
+    <section id="projects" aria-labelledby="projects-heading" className="section projects-section">
       <div className="page-shell">
         <SectionHeading id="projects-heading">Selected projects</SectionHeading>
         <div className="project-list">
           {projects.map((project) => (
             <article key={project.title} className="project">
+              <p className="project-category">{project.category}</p>
               <h3>
                 {project.href ? (
                   <a href={project.href} target="_blank" rel="noopener noreferrer" className="project-link">

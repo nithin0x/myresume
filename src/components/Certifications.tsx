@@ -18,6 +18,7 @@ export default function Certifications() {
                 ) : cert.name}
               </h3>
               <p>{cert.issuer} · {cert.year}</p>
+              {cert.expires && <p>Expires {cert.expires}</p>}
             </li>
           ))}
         </ul>

@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { profile } from '@/data/profile'
 
 const links = [
+  { href: '#hero', label: 'Overview' },
   { href: '#about', label: 'About' },
   { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
@@ -28,8 +30,6 @@ export default function Nav() {
       const section = document.querySelector(href)
       if (section) observer.observe(section)
     })
-    const hero = document.querySelector('#hero')
-    if (hero) observer.observe(hero)
     return () => observer.disconnect()
   }, [])
 
@@ -73,6 +73,10 @@ export default function Nav() {
             <a key={href} href={href} className="nav-link" aria-current={active === href ? 'location' : undefined}>{label}</a>
           ))}
         </div>
+        <div className="nav-contact">
+          <p>Security roles &amp; consulting</p>
+          <a href={`mailto:${profile.email}`} className="btn btn-primary">Email me</a>
+        </div>
         <button ref={menuButton} id="mobile-menu-btn" className="menu-toggle" onClick={() => setOpen(!open)}
           aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-menu">
           {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
@@ -89,6 +93,6 @@ export default function Nav() {
             aria-current={active === href ? 'location' : undefined}>{label}</a>
         ))}
       </div>
-    </nav><noscript><style>{`.menu-toggle { display: none; } .desktop-links { display: flex; flex-wrap: wrap; gap: 4px 16px; } .nav-inner { height: auto; min-height: 80px; padding-block: 16px; } .site-nav { position: static; } .hero { padding-top: 48px; }`}</style></noscript></header>
+    </nav><noscript><style>{`@media (max-width: 1199px) { .menu-toggle { display: none; } .desktop-links { display: flex; flex-wrap: wrap; gap: 4px 16px; } .nav-inner { height: auto; min-height: 80px; padding-block: 16px; } .site-nav { position: static; } .hero { padding-top: 48px; } }`}</style></noscript></header>
   )
 }
