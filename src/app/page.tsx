@@ -10,6 +10,8 @@ import Timeline from '@/components/Timeline'
 import Contact from '@/components/Contact'
 import Certifications from '@/components/Certifications'
 import Footer from '@/components/Footer'
+import Writing from '@/components/Writing'
+import PageTools from '@/components/PageTools'
 
 export const metadata: Metadata = {
   alternates: { canonical: profile.url },
@@ -46,7 +48,9 @@ export default function Home() {
     <>
       <Nav />
       <main id="main" tabIndex={-1}>
+        <PageTools />
         <Hero />
+        <Writing />
         <About />
         <Timeline />
         <Projects />

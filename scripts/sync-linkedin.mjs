@@ -76,6 +76,9 @@ export async function syncLinkedIn({
   }
   const post = normalizePost(payload)
   const current = JSON.parse(await readFile(postFile, 'utf8'))
+  if (current.publishedDate && current.publishedDate > post.publishedDate) {
+    throw new Error('Feed post is older than the saved post; saved data was not changed.')
+  }
   if (Object.entries(post).every(([key, value]) => JSON.stringify(current[key]) === JSON.stringify(value))) {
     console.log('LinkedIn post content is unchanged.')
     return false
