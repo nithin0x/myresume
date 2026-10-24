@@ -8,7 +8,7 @@ export const profile = {
   location: 'Coimbatore, Tamil Nadu, India',
   employer: 'TiQHUB, LLC',
   title: 'Nithin Kumar M | Penetration Testing & Cloud Security',
-  description: 'Nithin Kumar M, cybersecurity analyst at TiQHUB. AI, web, API and cloud penetration testing, vendor risk assessments, and Microsoft 365 security automation.',
+  description: 'Nithin Kumar M, cybersecurity analyst. AI, web, API and cloud penetration testing for TiQHUB and its clients, vendor risk assessments, and automation.',
   headline: 'I lead penetration testing and build security controls for cloud environments.',
   focusAreas: [
     'AI Security Testing',
@@ -17,6 +17,8 @@ export const profile = {
     'Cloud Security',
     'Vendor Risk Assessment',
     'Microsoft 365 Security Automation',
+    'Security Tool Development',
+    'Open-source Tool Integration',
     'NIST SP 800-171 r2 Control Implementation',
     'Incident Response',
     'Active Directory Security',

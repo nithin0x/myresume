@@ -71,6 +71,8 @@ export const skillCategories: Category[] = [
       'Python',
       'PowerShell',
       'Bash',
+      'Custom Tool Development',
+      'Open-source Tool Integration',
       'Claude',
       'Administrator sign-in monitoring',
       'UTCM drift monitoring',

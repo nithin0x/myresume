@@ -1,16 +1,18 @@
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
+import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google'
 import './globals.css'
 import { profile } from '@/data/profile'
 
-const jetbrains = localFont({
-  src: [
-    { path: '../assets/fonts/JetBrainsMono-Regular.woff2', weight: '400', style: 'normal' },
-    { path: '../assets/fonts/JetBrainsMono-Bold.woff2', weight: '700', style: 'normal' },
-  ],
-  variable: '--font-mono',
+const instrument = Instrument_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
   display: 'swap',
-  fallback: ['monospace'],
+})
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -41,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');document.documentElement.dataset.theme=t==='light'||t==='dark'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch(e){document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}})()` }} /></head>
-      <body className={jetbrains.variable}>
+      <body className={`${instrument.variable} ${bricolage.variable}`}>
         <a href="#main" className="skip-link">
           Skip to content
         </a>

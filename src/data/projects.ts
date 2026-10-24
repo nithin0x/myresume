@@ -13,7 +13,7 @@ export const projects: Project[] = [
     title: 'Microsoft 365 & Windows automation',
     category: 'Security automation',
     href: null,
-    description: 'PowerShell and Python scripts for tenant security checks and device administration. I test changes in the lab before using them in production.',
+    description: 'Custom tools and scripts in PowerShell and Python that save time on tenant security checks and device administration. I also integrate open-source tools that fit our internal requirements and test changes in the lab before using them in production.',
     details: [
       'Monitor administrator sign-ins and set up UTCM configuration drift monitoring.',
       'Extract Microsoft Purview audit logs for review.',
