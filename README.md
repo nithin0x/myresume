@@ -29,6 +29,10 @@ npm run check:export
 
 The build exports the site to `out/`. Pushes to `main` deploy through GitHub Actions. Set the repository's **Settings → Pages → Source** to **GitHub Actions**.
 
+After export, the build adds a Content Security Policy with hashes for the generated inline scripts. CI audits dependencies and uses commit-pinned GitHub Actions. Dependabot checks npm packages and Actions weekly.
+
+GitHub Pages serves the policy through an HTML meta tag. Header-only controls such as HSTS and CSP `frame-ancestors` require a host or proxy that supports custom response headers.
+
 To preview the export, run `python3 -m http.server 4174 --directory out` and visit `http://localhost:4174`.
 
 ## Content updates
@@ -50,5 +54,7 @@ For automatic LinkedIn updates, set the Actions secret `LINKEDIN_FEED_URL` to a 
 ```
 
 Use a real direct HTTPS LinkedIn post URL and a valid `YYYY-MM-DD` date. `tags` is optional. A LinkedIn profile URL, RSS feed, or raw LinkedIn API response cannot serve as this endpoint. Without a configured feed, the saved post stays unchanged.
+
+The feed endpoint must use HTTPS and return JSON directly, without redirects. Responses are limited to 64 KiB; titles to 200 characters; summaries to 12,000; and tags to 20 entries of up to 60 characters. Blog imports limit frontmatter to 16 KiB, titles to 200 characters, and descriptions to 1,000.
 
 To select a LinkedIn post manually, run **Sync portfolio content** with its URL, title, text, and publication date. For local updates, use `npm run set:linkedin` with `LINKEDIN_POST_URL`, `LINKEDIN_POST_TITLE`, `LINKEDIN_POST_TEXT`, and `LINKEDIN_POST_DATE` set, then rebuild.

@@ -17,11 +17,14 @@ export function articleFromSource(path, raw, updatedAt) {
   if (!path.startsWith(prefix) || !/^(write-ups|blogs)\//i.test(relative) || /(^|\/)index\.mdx?$/i.test(relative)) return null
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
   if (!match) throw new Error(`Missing article frontmatter: ${path}`)
+  if (Buffer.byteLength(match[1], 'utf8') > 16 * 1024) throw new Error(`Article frontmatter exceeds 16 KiB: ${path}`)
   const meta = parse(match[1], { maxAliasCount: 0 })
+  if (!meta || typeof meta !== 'object' || Array.isArray(meta)) throw new Error(`Invalid article frontmatter: ${path}`)
   if (meta.draft === true) return null
   if (typeof meta.title !== 'string' || !meta.title.trim() || typeof meta.description !== 'string' || !meta.description.trim()) {
     throw new Error(`Missing title or description: ${path}`)
   }
+  if (meta.title.trim().length > 200 || meta.description.trim().length > 1000) throw new Error(`Article title or description exceeds its length limit: ${path}`)
   const route = meta.slug ?? relative.replace(/\.mdx?$/i, '').split('/').map((part) => slug(part)).join('/')
   if (typeof route !== 'string' || route.includes('..') || !/^(write-ups|blogs)\//.test(route)) throw new Error(`Invalid article route: ${path}`)
   const url = new URL(`/${route.replace(/^\/+|\/+$/g, '')}/`, 'https://nithin0x.space')

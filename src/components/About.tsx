@@ -8,16 +8,6 @@ export default function About() {
         <SectionHeading id="about-heading">About</SectionHeading>
         <div className="about-copy">
           <p className="lead">
-            I’m a cybersecurity analyst at TiQHUB, where I lead penetration testing for our
-            organization and clients. I also work on cloud security and vendor risk, from reviewing
-            products before procurement to implementing controls and checking that they continue to hold.
-          </p>
-          <p>
-            To save time on routine work, I develop tools and scripts and integrate open-source tools
-            to our requirements. These support security monitoring, audit evidence collection,
-            and device administration across Microsoft 365 and Windows.
-          </p>
-          <p>
             I use Claude in red team and blue team work, including log analysis, reconnaissance
             triage, and report drafts. I verify the output before using it in an assessment.
           </p>

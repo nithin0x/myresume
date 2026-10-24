@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(profile.url),
   title: profile.title,
   description: profile.description,
+  referrer: 'strict-origin-when-cross-origin',
   authors: [{ name: profile.name, url: profile.url }],
   openGraph: {
     title: profile.title,

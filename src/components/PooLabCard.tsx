@@ -11,8 +11,8 @@ export default function PooLabCard() {
   const summary = longPost && !expanded ? `${post.summary.slice(0, 337).trimEnd()}…` : post.summary
   return (
     <aside className="linkedin-card" aria-labelledby="linkedin-heading">
-      <div className="linkedin-card-label"><Linkedin aria-hidden="true" /><span>{directPost ? 'Latest LinkedIn post' : 'LinkedIn · Lab note'}</span><span className="editorial-label">Field notes</span></div>
-      <div className="post-author"><span className="avatar">NK</span><div><strong>{post.author}</strong><span>Cybersecurity analyst{post.publishedDate && <> · <time dateTime={post.publishedDate}>{post.publishedDate}</time></>}</span></div></div>
+      <div className="linkedin-card-label"><Linkedin aria-hidden="true" /><span>{directPost ? 'Latest LinkedIn post' : 'LinkedIn · Lab note'}</span></div>
+      <div className="post-author"><span className="avatar">NK</span><div><strong>{post.author}</strong>{post.publishedDate && <span><time dateTime={post.publishedDate}>{post.publishedDate}</time></span>}</div></div>
       <h2 id="linkedin-heading">{post.title}</h2>
       <p className="post-summary" id="linkedin-summary">{summary}</p>
       {longPost && <button className="expand-post" type="button" aria-expanded={expanded} aria-controls="linkedin-summary" onClick={() => setExpanded(!expanded)}>{expanded ? 'Show less' : 'Read full note'}<ChevronDown aria-hidden="true" /></button>}

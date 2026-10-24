@@ -41,6 +41,7 @@ test('valid content is saved once; identical content leaves bytes and timestamp 
     assert.equal(url, endpoint)
     assert.equal(options.headers.Accept, 'application/json')
     assert.ok(options.signal instanceof AbortSignal)
+    assert.equal(options.redirect, 'error')
     return jsonResponse(payload)
   } }
   assert.equal(await syncLinkedIn(options), true)
@@ -116,4 +117,58 @@ test('an older feed response cannot overwrite a newer saved post', async (t) => 
   const saved = await readFile(postFile, 'utf8')
   await assert.rejects(syncLinkedIn({ endpoint, postFile, fetchPost: async () => jsonResponse({ ...payload, publishedDate: '2026-01-01' }) }), /older/)
   assert.equal(await readFile(postFile, 'utf8'), saved)
+})
+
+test('rejects insecure feed endpoints before making a request without exposing credentials', async (t) => {
+  const { postFile, original } = await fixture(t)
+  for (const endpoint of ['http://feed.example.test/latest?token=private', 'https://user:private@feed.example.test/latest']) {
+    await assert.rejects(syncLinkedIn({ endpoint, postFile, fetchPost: () => assert.fail('Unexpected fetch') }), (error) => {
+      assert.match(error.message, /HTTPS/)
+      assert.ok(!error.message.includes('private'))
+      return true
+    })
+  }
+  assert.equal(await readFile(postFile, 'utf8'), original)
+})
+
+test('oversized streamed responses cannot replace the snapshot even with a false Content-Length', async (t) => {
+  const { postFile, original } = await fixture(t)
+  let cancelled = false
+  let reads = 0
+  const stream = new ReadableStream({
+    pull(controller) {
+      reads++
+      controller.enqueue(new Uint8Array(32 * 1024))
+    },
+    cancel() { cancelled = true },
+  })
+  await assert.rejects(syncLinkedIn({ endpoint, postFile, fetchPost: async () => new Response(stream, { headers: { 'Content-Length': '2' } }) }), /64 KiB/)
+  assert.equal(cancelled, true)
+  assert.ok(reads <= 4)
+  assert.equal(await readFile(postFile, 'utf8'), original)
+})
+
+test('feed stream failures keep the saved file and redact endpoint details', async (t) => {
+  const { postFile, original } = await fixture(t)
+  const stream = new ReadableStream({ start(controller) { controller.error(new Error(endpoint)) } })
+  await assert.rejects(syncLinkedIn({ endpoint, postFile, fetchPost: async () => new Response(stream) }), (error) => {
+    assert.ok(!error.message.includes(endpoint))
+    return true
+  })
+  assert.equal(await readFile(postFile, 'utf8'), original)
+})
+
+test('limits imported field lengths and topic counts', () => {
+  for (const fields of [
+    { title: 'x'.repeat(201) }, { summary: 'x'.repeat(12001) },
+    { author: 'x'.repeat(121) }, { id: 'x'.repeat(2049) },
+    { tags: Array(21).fill('topic') }, { tags: ['x'.repeat(61)] },
+  ]) assert.throws(() => normalizePost({ ...payload, ...fields }))
+})
+
+test('does not publish URL query credentials or tracking fragments', () => {
+  const post = normalizePost({ ...payload, id: undefined, url: `${payload.url}?token=private#tracking` })
+  assert.equal(post.url, payload.url)
+  assert.equal(post.id, payload.url)
+  assert.ok(!JSON.stringify(post).includes('private'))
 })

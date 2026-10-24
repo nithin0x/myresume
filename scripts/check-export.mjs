@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFile, access } from 'node:fs/promises'
+import { readFile, access, readdir } from 'node:fs/promises'
 
 // Check the files actually shipped to static hosting, without a Next.js server.
 const html = await readFile('out/index.html', 'utf8')
@@ -47,4 +47,18 @@ assert.equal(image.readUInt32BE(20), 630)
 const notFound = await readFile('out/404.html', 'utf8')
 assert.match(notFound, /name="robots" content="noindex"/)
 assert.ok(!notFound.includes('application/ld+json'))
+for (const file of (await readdir('out', { recursive: true })).filter((file) => file.endsWith('.html'))) {
+  const page = await readFile(`out/${file}`, 'utf8')
+  const policies = [...page.matchAll(/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/g)]
+  assert.equal(policies.length, 1, `Missing or duplicate CSP in ${file}`)
+  assert.ok(page.indexOf(policies[0][0]) < page.indexOf('<script'), `CSP follows scripts in ${file}`)
+  const policy = policies[0][1]
+  assert.match(policy, /default-src 'none'/)
+  assert.match(policy, /script-src 'self' 'sha256-/)
+  assert.match(policy, /script-src-attr 'none'/)
+  assert.ok(!/script-src [^;]*'unsafe-(?:inline|eval)'/.test(policy))
+  assert.match(policy, /object-src 'none'/)
+  assert.match(policy, /base-uri 'none'/)
+  assert.ok(!/(?:src|href|action)="\s*javascript:/i.test(page), `Unsafe URL in ${file}`)
+}
 console.log('Static export checks passed: headings, anchors, assets, canonical, metadata, JSON-LD, robots, sitemap, social image, and 404 indexability.')

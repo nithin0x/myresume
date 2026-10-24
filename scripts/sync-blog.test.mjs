@@ -51,6 +51,20 @@ test('reading estimate excludes code blocks and image source paths', () => {
   assert.equal(articleFromSource(path, raw + longCode, date).readingMinutes, 1)
 })
 
+test('rejects oversized frontmatter and display fields before saving them', () => {
+  assert.throws(() => articleFromSource(path, raw.replace('title:', `extra: "${'x'.repeat(17000)}"\ntitle:`), date), /16 KiB/)
+  for (const content of [
+    raw.replace('Assume & Decrypt"', `${'x'.repeat(201)}"`),
+    raw.replace('A practical IAM lab.', 'x'.repeat(1001)),
+    '---\nnull\n---\nBody',
+  ]) assert.throws(() => articleFromSource(path, content, date))
+})
+
+test('does not expand YAML aliases from the source repository', () => {
+  const content = '---\ntitle: &title Safe title\ndescription: *title\n---\nBody'
+  assert.throws(() => articleFromSource(path, content, date), /alias/i)
+})
+
 test('unavailable source preserves the last successful snapshot', async (t) => {
   const directory = await mkdtemp(join(tmpdir(), 'blog-sync-test-'))
   t.after(() => rm(directory, { recursive: true, force: true }))

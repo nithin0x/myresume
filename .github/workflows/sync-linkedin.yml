@@ -34,15 +34,18 @@ jobs:
       contents: write
       actions: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           ref: main
-      - uses: actions/setup-node@v5
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: '22'
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Audit dependencies
+        run: npm audit --audit-level=moderate
       - name: Test content sync
         run: npm run test:sync
       - name: Sync blog and write-ups
@@ -79,7 +82,10 @@ jobs:
           npm run check:export
       - name: Commit and push changed content
         if: steps.changes.outputs.updated == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          gh auth setup-git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/linkedin-post.json src/data/blog-posts.json
