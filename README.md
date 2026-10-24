@@ -15,6 +15,8 @@ npm run dev
 
 Profile and résumé content lives in `src/data/`. Styles live in `src/app/globals.css`.
 
+The design follows nithin0x.space, with light and dark themes, its terminal logo, and self-hosted JetBrains Mono. The font license is included in `src/assets/fonts/OFL.txt`.
+
 ## Build and deploy
 
 ```sh

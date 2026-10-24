@@ -26,7 +26,7 @@ export default function Writing() {
   return (
     <section id="writing" aria-labelledby="writing-heading" className="section writing-section">
       <div className="page-shell">
-        <div className="section-title-row"><div><p className="eyebrow">From nithin0x.space</p><h2 id="writing-heading">Writing &amp; lab notes<span className="heading-dot">.</span></h2><p className="section-intro">Attack paths, cloud security, and the details I learned in the lab.</p></div><a className="text-link" href={`${profile.blog}/write-ups/`} target="_blank" rel="noopener noreferrer">Visit the blog <ArrowUpRight aria-hidden="true" /></a></div>
+        <div className="section-title-row"><div><p className="eyebrow">From nithin0x.space</p><h2 id="writing-heading">Writing &amp; lab notes</h2><p className="section-intro">Walkthroughs and research notes from my labs, with the steps and findings written down.</p></div><a className="text-link" href={`${profile.blog}/write-ups/`} target="_blank" rel="noopener noreferrer">Visit the blog <ArrowUpRight aria-hidden="true" /></a></div>
         <div className="writing-controls">
           <div className="filter-tabs" role="group" aria-label="Content type">{['All', 'Write-up', 'Blog'].map((value) => <button key={value} type="button" aria-pressed={kind === value} onClick={() => { setKind(value); setLimit(6) }}>{value === 'All' ? 'Discover all' : value === 'Write-up' ? 'Lab write-ups' : 'Blog posts'}<span>{value === 'All' ? blog.items.length : blog.items.filter((post) => post.kind === value).length}</span></button>)}</div>
           <div className="library-toolbar">

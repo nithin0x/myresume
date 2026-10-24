@@ -6,7 +6,7 @@ export default function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="section projects-section">
       <div className="page-shell">
-        <SectionHeading id="projects-heading">Selected projects</SectionHeading>
+        <SectionHeading id="projects-heading">Selected work</SectionHeading>
         <div className="project-list">
           {projects.map((project) => (
             <article key={project.title} className="project">
@@ -19,6 +19,7 @@ export default function Projects() {
                 ) : project.title}
               </h3>
               <p className="project-description">{project.description}</p>
+              {project.details && <ul className="project-points">{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>}
             </article>
           ))}
         </div>

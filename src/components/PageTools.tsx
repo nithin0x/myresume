@@ -18,14 +18,23 @@ export default function PageTools() {
   const dialog = useRef<HTMLDialogElement>(null)
   const input = useRef<HTMLInputElement>(null)
   const [query, setQuery] = useState('')
+  const [sectionText, setSectionText] = useState<Record<string, string>>({})
   const dark = useSyncExternalStore(subscribeTheme, () => document.documentElement.dataset.theme === 'dark', () => false)
-  const search = query.trim().toLowerCase()
+  const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean)
+  function rank(label: string) {
+    const title = label.toLowerCase()
+    const search = words.join(' ')
+    if (!search) return 0
+    return title === search ? 3 : title.startsWith(search) ? 2 : words.every((word) => title.includes(word)) ? 1 : 0
+  }
   const entries = [
-    ...navigation.map((entry) => ({ ...entry, type: 'On this page', terms: entry.label })),
+    ...navigation.map((entry) => ({ ...entry, type: 'On this page', terms: `${entry.label} ${sectionText[entry.href] ?? ''}` })),
     ...blog.items.map((post) => ({ href: post.url, label: post.title, type: post.platform, terms: `${post.title} ${post.summary} ${post.platform}` })),
-  ].filter((entry) => !search || entry.terms.toLowerCase().includes(search)).slice(0, 12)
+  ].filter((entry) => words.every((word) => entry.terms.toLowerCase().includes(word)))
+    .sort((a, b) => rank(b.label) - rank(a.label)).slice(0, 12)
 
   function openSearch() {
+    setSectionText(Object.fromEntries(navigation.map(({ href }) => [href, document.querySelector(href)?.textContent ?? ''])))
     setQuery('')
     dialog.current?.showModal()
     input.current?.focus()

@@ -9,6 +9,7 @@ export default function Contact() {
         <div>
           <h2 id="contact-heading">Contact</h2>
           <p className="contact-intro">
+            Get in touch about penetration testing, cloud security, vendor assessments, or automation.
             I’m open to security roles, consulting, and collaboration. Email is the best way to reach me.
           </p>
           <a href={`mailto:${profile.email}`} className="btn btn-primary contact-email">

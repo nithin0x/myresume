@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, BookOpen, BriefcaseBusiness, Code2, FolderCode, House, Mail, Menu, ShieldCheck, UserRound, Wrench, X } from 'lucide-react'
+import { ArrowUpRight, BookOpen, BriefcaseBusiness, FolderCode, House, Mail, Menu, ShieldCheck, UserRound, Wrench, X } from 'lucide-react'
 import { profile } from '@/data/profile'
 import { navigation } from '@/data/navigation'
+import Brand from './Brand'
 
 const icons = [House, BookOpen, UserRound, BriefcaseBusiness, FolderCode, Wrench, ShieldCheck, Mail]
 
@@ -14,14 +15,27 @@ export default function Nav() {
   const menuButton = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) setActive(`#${entry.target.id}`) })
-    }, { rootMargin: '-10% 0px -70% 0px' })
-    navigation.forEach(({ href }) => {
-      const section = document.querySelector(href)
-      if (section) observer.observe(section)
-    })
-    return () => observer.disconnect()
+    const sections = navigation.map(({ href }) => ({ href, element: document.querySelector(href) }))
+    let frame = 0
+    function updateActive() {
+      frame = 0
+      const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0
+      const passed = sections.filter(({ element }) => element && element.getBoundingClientRect().top <= offset + 1)
+      const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2
+      const current = atBottom ? sections[sections.length - 1] : passed[passed.length - 1] ?? sections[0]
+      setActive(current.href)
+    }
+    function scheduleUpdate() {
+      if (!frame) frame = requestAnimationFrame(updateActive)
+    }
+    scheduleUpdate()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    return () => {
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      cancelAnimationFrame(frame)
+    }
   }, [])
 
   useEffect(() => {
@@ -65,10 +79,10 @@ export default function Nav() {
   return (
     <header><nav ref={navRef} aria-label="Primary" className="site-nav">
       <div className="nav-inner">
-        <a href="#hero" className="wordmark" aria-label="nithin0x, back to top" onClick={() => goTo('#hero')}><span className="brand-icon"><Code2 aria-hidden="true" /></span>nithin<span className="brand-suffix">0x</span></a>
+        <a href="#hero" className="wordmark" aria-label="nithin0x.space, back to top" onClick={() => goTo('#hero')}><Brand /></a>
         <div className="desktop-links"><p className="nav-caption">Explore</p>{links}</div>
         <div className="nav-external"><p className="nav-caption">Elsewhere</p><a href={profile.blog} target="_blank" rel="noopener noreferrer">nithin0x.space <ArrowUpRight aria-hidden="true" /></a><a href="https://github.com/nithin0x" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight aria-hidden="true" /></a></div>
-        <div className="nav-contact"><div className="nav-person"><span className="avatar">NK</span><span><strong>Nithin Kumar M</strong><small>Open to security roles</small></span></div><a href={`mailto:${profile.email}`} className="btn btn-primary">Let’s talk <ArrowUpRight aria-hidden="true" /></a></div>
+        <div className="nav-contact"><div className="nav-person"><span className="avatar">NK</span><span><strong>Nithin Kumar M</strong><small>Cybersecurity analyst</small></span></div><a href={`mailto:${profile.email}`} className="btn btn-primary">Get in touch <ArrowUpRight aria-hidden="true" /></a></div>
         <button ref={menuButton} id="mobile-menu-btn" className="menu-toggle icon-button" onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-menu">{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
       </div>
       <div id="mobile-menu" className="mobile-menu" hidden={!open}>{links}</div>

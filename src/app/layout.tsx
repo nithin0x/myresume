@@ -1,18 +1,16 @@
 import type { Metadata } from 'next'
-import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { profile } from '@/data/profile'
 
-const instrument = Instrument_Sans({
-  subsets: ['latin'],
-  variable: '--font-sans',
+const jetbrains = localFont({
+  src: [
+    { path: '../assets/fonts/JetBrainsMono-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '../assets/fonts/JetBrainsMono-Bold.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-mono',
   display: 'swap',
-})
-
-const bricolage = Bricolage_Grotesque({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
+  fallback: ['monospace'],
 })
 
 export const metadata: Metadata = {
@@ -27,13 +25,13 @@ export const metadata: Metadata = {
     url: profile.url,
     siteName: profile.name,
     locale: 'en_IN',
-    images: [{ url: '/social.png', width: 1200, height: 630, alt: `${profile.name}, cybersecurity analyst and penetration tester` }],
+    images: [{ url: '/social.png', width: 1200, height: 630, alt: `${profile.name}, penetration testing and cloud security` }],
   },
   twitter: {
     card: 'summary_large_image',
     title: profile.title,
     description: profile.description,
-    images: [{ url: '/social.png', alt: `${profile.name}, cybersecurity analyst and penetration tester` }],
+    images: [{ url: '/social.png', alt: `${profile.name}, penetration testing and cloud security` }],
   },
   icons: { icon: '/favicon.svg' },
   other: { 'darkreader-lock': '' },
@@ -43,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');document.documentElement.dataset.theme=t==='light'||t==='dark'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch(e){document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}})()` }} /></head>
-      <body className={`${instrument.variable} ${bricolage.variable}`}>
+      <body className={jetbrains.variable}>
         <a href="#main" className="skip-link">
           Skip to content
         </a>

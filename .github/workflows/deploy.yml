@@ -27,7 +27,7 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-      - name: Test LinkedIn sync
+      - name: Test content sync
         run: npm run test:sync
       - name: Build
         run: npm run build

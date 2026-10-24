@@ -8,13 +8,18 @@ export default function About() {
         <SectionHeading id="about-heading">About</SectionHeading>
         <div className="about-copy">
           <p className="lead">
-            My work covers vulnerability assessment, threat modeling, code review, and incident
-            response. I use NIST 800-53 and ISO 27001 to guide assessments and hardening work.
+            I’m a cybersecurity analyst at TiQHUB, working with our internal teams and clients on
+            penetration testing, cloud security, and vendor risk. My work runs from reviewing a
+            product before procurement to implementing controls and checking that they continue to hold.
           </p>
           <p>
-            I use LLMs for log analysis, recon triage, and report drafts, then verify every finding
-            manually. I’m currently studying for SC-500 and exploring how cloud and AI relate to
-            systems engineering and security.
+            I use Claude in red team and blue team work, including log analysis, reconnaissance
+            triage, and report drafts. I verify the output before using it in an assessment.
+          </p>
+          <p>
+            I keep learning as the work changes. Right now, I’m teaching myself more about cloud
+            and AI, especially where they meet systems engineering and security. I’m also studying
+            for SC-500.
           </p>
           <p>
             On r/netsec, r/AskNetsec, and security Discord servers, I discuss offensive security
