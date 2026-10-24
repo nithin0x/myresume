@@ -7,24 +7,51 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: linkedin-sync
+  cancel-in-progress: false
 
 jobs:
   sync:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main
       - uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Test sync behavior
+        run: npm run test:sync
       - name: Sync latest LinkedIn content
         run: npm run sync:linkedin
         env:
           LINKEDIN_FEED_URL: ${{ secrets.LINKEDIN_FEED_URL }}
+      - name: Detect content changes
+        id: changes
+        run: |
+          if ! git diff --quiet src/data/linkedin-post.json; then
+            echo "updated=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Validate updated site
+        if: steps.changes.outputs.updated == 'true'
+        run: |
+          npm run lint
+          npm run build
+          npm run typecheck
+          npm run check:export
       - name: Commit and push changes if updated
+        if: steps.changes.outputs.updated == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -35,3 +62,9 @@ jobs:
           else
             echo "No changes in LinkedIn post data."
           fi
+      # Pushes made with GITHUB_TOKEN do not trigger the deployment's push event.
+      - name: Request Pages deployment
+        if: steps.changes.outputs.updated == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

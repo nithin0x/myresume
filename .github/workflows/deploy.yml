@@ -27,8 +27,12 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+      - name: Test LinkedIn sync
+        run: npm run test:sync
       - name: Build
         run: npm run build
+      - name: Typecheck
+        run: npm run typecheck
       - name: Validate static export
         run: npm run check:export
       - uses: actions/upload-pages-artifact@v3

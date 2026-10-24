@@ -1,63 +1,41 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { ArrowUpRight, Sparkles, Terminal } from 'lucide-react'
+import { useRef, useState, type KeyboardEvent } from 'react'
+import { ArrowUpRight, Linkedin, Terminal } from 'lucide-react'
 import { socials } from '@/data/profile'
-import initialPost from '@/data/linkedin-post.json'
+import post from '@/data/linkedin-post.json'
 
-interface LinkedInPostData {
-  id: string
-  title: string
-  author: string
-  handle: string
-  publishedDate: string
-  url: string
-  summary: string
-  tags: string[]
-  syncStatus: string
-  lastSynced: string
-}
+const tabs = ['poo', 'linkedin'] as const
 
 export default function PooLabCard() {
   const [activeTab, setActiveTab] = useState<'poo' | 'linkedin'>('poo')
-  const [post, setPost] = useState<LinkedInPostData>(initialPost as LinkedInPostData)
-  const [synced, setSynced] = useState(false)
+  const tabList = useRef<HTMLDivElement>(null)
+  const isSynced = post.syncStatus === 'synced'
 
-  useEffect(() => {
-    let mounted = true
-
-    const loadFreshPost = () => {
-      try {
-        const cached = window.localStorage.getItem('cybernithin_latest_post')
-        if (cached && mounted) {
-          const parsed = JSON.parse(cached)
-          if (parsed?.publishedDate) {
-            setPost(parsed)
-          }
-        }
-      } catch {
-        // Storage unavailable
-      }
-      if (mounted) {
-        setSynced(true)
-      }
+  function handleTabKey(event: KeyboardEvent<HTMLDivElement>) {
+    const index = tabs.indexOf(activeTab)
+    let next: number
+    switch (event.key) {
+      case 'ArrowRight': next = (index + 1) % tabs.length; break
+      case 'ArrowLeft': next = (index + tabs.length - 1) % tabs.length; break
+      case 'Home': next = 0; break
+      case 'End': next = tabs.length - 1; break
+      default: return
     }
-
-    const timer = window.setTimeout(loadFreshPost, 0)
-    return () => {
-      mounted = false
-      window.clearTimeout(timer)
-    }
-  }, [])
+    event.preventDefault()
+    setActiveTab(tabs[next])
+    tabList.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus()
+  }
 
   return (
-    <aside className="hero-note glass-card scrimba-glow" aria-labelledby="lab-note-heading">
+    <aside className="hero-note" aria-label="Lab notes and LinkedIn">
       <div className="card-top-bar">
-        <div className="card-tab-group" role="tablist" aria-label="Lab note views">
+        <div ref={tabList} className="card-tab-group" role="tablist" aria-label="Lab note views" onKeyDown={handleTabKey}>
           <button
             type="button"
             role="tab"
             aria-selected={activeTab === 'poo'}
+            tabIndex={activeTab === 'poo' ? 0 : -1}
             aria-controls="tab-poo"
             id="tab-btn-poo"
             className={`card-tab ${activeTab === 'poo' ? 'active' : ''}`}
@@ -70,26 +48,23 @@ export default function PooLabCard() {
             type="button"
             role="tab"
             aria-selected={activeTab === 'linkedin'}
+            tabIndex={activeTab === 'linkedin' ? 0 : -1}
             aria-controls="tab-linkedin"
             id="tab-btn-linkedin"
             className={`card-tab ${activeTab === 'linkedin' ? 'active' : ''}`}
             onClick={() => setActiveTab('linkedin')}
           >
-            <span className="live-dot" aria-hidden="true" />
-            <span>Latest LinkedIn</span>
+            <Linkedin className="tab-icon" aria-hidden="true" />
+            <span>LinkedIn</span>
           </button>
         </div>
-
-        <span className="sync-badge" title="Content verified and synced">
-          <Sparkles className="badge-icon" aria-hidden="true" />
-          {synced ? 'Auto-synced' : 'Ready'}
-        </span>
       </div>
 
       <div
         id="tab-poo"
         role="tabpanel"
         aria-labelledby="tab-btn-poo"
+        tabIndex={0}
         hidden={activeTab !== 'poo'}
         className="card-content"
       >
@@ -118,14 +93,15 @@ export default function PooLabCard() {
         id="tab-linkedin"
         role="tabpanel"
         aria-labelledby="tab-btn-linkedin"
+        tabIndex={0}
         hidden={activeTab !== 'linkedin'}
         className="card-content"
       >
-        <div className="linkedin-header">
-          <p className="eyebrow">Latest on LinkedIn · {post.publishedDate}</p>
-          <span className="live-pill">Live update</span>
-        </div>
-        <h3 className="linkedin-post-title">{post.title}</h3>
+        <p className="eyebrow">
+          {isSynced ? 'Latest saved LinkedIn post' : 'From my LinkedIn lab notes'}
+          {post.publishedDate && <> · <time dateTime={post.publishedDate}>{post.publishedDate}</time></>}
+        </p>
+        <h2 className="linkedin-post-title">{post.title}</h2>
         <p className="linkedin-post-text">{post.summary}</p>
         <div className="card-meta-tags">
           {post.tags.map((tag) => (
@@ -138,9 +114,10 @@ export default function PooLabCard() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Open post on LinkedIn <ArrowUpRight aria-hidden="true" />
+          {isSynced ? 'Open post on LinkedIn' : 'View LinkedIn profile'} <ArrowUpRight aria-hidden="true" />
         </a>
       </div>
+      <noscript><style>{`.hero-note .card-top-bar { display: none; } .hero-note [role="tabpanel"][hidden] { display: block; margin-top: 28px; }`}</style></noscript>
     </aside>
   )
 }
