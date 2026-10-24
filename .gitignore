@@ -19,3 +19,9 @@
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local agent configuration and review artifacts
+/.agents/
+/.codex/
+/.aws/
+/docs/
