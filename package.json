@@ -10,7 +10,8 @@
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "check:export": "node scripts/check-export.mjs",
-    "sync:linkedin": "node scripts/sync-linkedin.mjs"
+    "sync:linkedin": "node scripts/sync-linkedin.mjs",
+    "test:sync": "node --test scripts/sync-linkedin.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.408.0",

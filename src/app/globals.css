@@ -14,7 +14,7 @@
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 104px; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-sans), sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+body { isolation: isolate; margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-sans), sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, p { margin: 0; }
 h1, h2, h3 { font-family: var(--font-display), sans-serif; text-wrap: balance; }
 h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 600; line-height: 1.12; letter-spacing: -.04em; }
@@ -69,27 +69,21 @@ button, a { touch-action: manipulation; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 24px; }
 
 /* Hero Note / P.O.O. Card with Scrimba Frosted Glass effect */
-.hero-note { align-self: center; background: rgba(234, 229, 242, 0.78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(209, 201, 223, 0.85); border-radius: 12px; padding: 24px; box-shadow: 0 12px 32px -8px rgba(100, 80, 140, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.85); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.hero-note { min-width: 0; overflow-wrap: anywhere; align-self: center; background: rgba(234, 229, 242, 0.78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(209, 201, 223, 0.85); border-radius: 12px; padding: 24px; box-shadow: 0 12px 32px -8px rgba(100, 80, 140, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.85); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
 .hero-note:hover { box-shadow: 0 16px 40px -8px rgba(100, 80, 140, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.95); border-color: rgba(180, 165, 200, 0.95); }
 
 /* Switchable View Header */
-.card-top-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(209, 201, 223, 0.6); }
-.card-tab-group { display: inline-flex; align-items: center; background: rgba(255, 255, 255, 0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(209, 201, 223, 0.7); border-radius: 8px; padding: 3px; gap: 2px; }
-.card-tab { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 0; background: transparent; color: var(--muted); font-size: 13px; font-weight: 600; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; }
+.card-top-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(209, 201, 223, 0.6); }
+.card-tab-group { display: inline-flex; flex-wrap: wrap; align-items: center; background: rgba(255, 255, 255, 0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(209, 201, 223, 0.7); border-radius: 8px; padding: 3px; gap: 2px; }
+.card-tab { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 0; background: transparent; color: var(--muted); font-size: 13px; font-weight: 600; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; }
 .card-tab:hover { color: var(--ink); }
 .card-tab.active { background: rgba(255, 255, 255, 0.92); color: var(--ink); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
-.tab-icon { width: 14px; height: 14px; }
-.live-dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981; display: inline-block; animation: pulse-live 2s infinite ease-in-out; }
-@keyframes pulse-live { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
-.sync-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: #6b21a8; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(209, 201, 223, 0.7); border-radius: 9999px; padding: 3px 9px; }
-.badge-icon { width: 12px; height: 12px; color: #9333ea; }
+.tab-icon { flex-shrink: 0; width: 14px; height: 14px; }
 .card-content h2, .card-content h3 { margin-top: 14px; font-size: 24px; line-height: 1.22; letter-spacing: -.025em; }
 .card-content > p:not(.eyebrow) { margin-top: 14px; color: #56505e; font-size: 15px; line-height: 1.65; }
 .card-meta-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
-.glass-pill { display: inline-flex; align-items: center; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 9999px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(209, 201, 223, 0.85); color: #4c4654; }
+.glass-pill { max-width: 100%; display: inline-flex; align-items: center; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 9999px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(209, 201, 223, 0.85); color: #4c4654; }
 .hero-note-cta { margin-top: 22px; display: inline-flex; }
-.linkedin-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.live-pill { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 7px; background: rgba(16, 185, 129, 0.15); color: #065f46; border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 9999px; }
 .linkedin-post-title { color: var(--ink); }
 .linkedin-post-text { color: #56505e; }
 
@@ -204,6 +198,6 @@ button, a { touch-action: manipulation; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .hero-note, .project, .contact-channel { transition: none; transform: none; }
-  .live-dot { animation: none; }
+  .btn, .hero-note, .project, .contact-channel, .nav-link, .card-tab { transition: none; }
+  .btn:hover, .project:hover, .contact-channel:hover { transform: none; }
 }
