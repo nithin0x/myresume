@@ -6,7 +6,7 @@ export default function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="section projects-section">
       <div className="page-shell">
-        <SectionHeading id="projects-heading">Selected work</SectionHeading>
+        <SectionHeading id="projects-heading">Projects</SectionHeading>
         <div className="project-list">
           {projects.map((project) => (
             <article key={project.title} className="project">
