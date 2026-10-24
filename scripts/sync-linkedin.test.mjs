@@ -109,3 +109,11 @@ test('supports documented aliases and supplies no stale tags from the previous p
   assert.equal(post.summary, payload.summary)
   assert.deepEqual(post.tags, [])
 })
+
+test('an older feed response cannot overwrite a newer saved post', async (t) => {
+  const { postFile } = await fixture(t)
+  await syncLinkedIn({ endpoint, postFile, fetchPost: async () => jsonResponse(payload) })
+  const saved = await readFile(postFile, 'utf8')
+  await assert.rejects(syncLinkedIn({ endpoint, postFile, fetchPost: async () => jsonResponse({ ...payload, publishedDate: '2026-01-01' }) }), /older/)
+  assert.equal(await readFile(postFile, 'utf8'), saved)
+})

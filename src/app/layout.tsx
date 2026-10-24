@@ -42,12 +42,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');document.documentElement.dataset.theme=t==='light'||t==='dark'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch(e){document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}})()` }} /></head>
       <body className={`${instrument.variable} ${bricolage.variable}`}>
-        <div className="bg-ambient-glow" aria-hidden="true">
-          <div className="ambient-orb ambient-orb-1" />
-          <div className="ambient-orb ambient-orb-2" />
-          <div className="ambient-orb ambient-orb-3" />
-        </div>
         <a href="#main" className="skip-link">
           Skip to content
         </a>

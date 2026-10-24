@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import { profile, socials } from '@/data/profile'
+import CopyEmail from './CopyEmail'
 
 export default function Contact() {
   return (
@@ -13,6 +14,7 @@ export default function Contact() {
           <a href={`mailto:${profile.email}`} className="btn btn-primary contact-email">
             {profile.email} <ArrowUpRight aria-hidden="true" />
           </a>
+          <CopyEmail />
           <dl className="contact-details">
             <div><dt>Work</dt><dd>Full-time · Contract · Remote</dd></div>
           </dl>

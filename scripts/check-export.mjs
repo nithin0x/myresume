@@ -20,7 +20,7 @@ for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) {
   assert.ok(ids.includes(id), `Missing anchor target #${id}`)
 }
 const sections = [...html.matchAll(/<section id="([^"]+)"/g)].map((match) => match[1])
-assert.deepEqual(sections, ['hero', 'about', 'experience', 'projects', 'skills', 'certifications', 'contact'])
+assert.deepEqual(sections, ['hero', 'writing', 'about', 'experience', 'projects', 'skills', 'certifications', 'contact'])
 for (const [, url] of html.matchAll(/(?:src|href)="(\/[^"?]*)(?:\?[^" ]*)?"/g)) {
   await access(`out${url}`)
 }

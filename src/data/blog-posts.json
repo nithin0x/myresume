@@ -1,0 +1,297 @@
+{
+  "source": "https://github.com/nithin0x/myblogsite.git",
+  "sourceCommit": "ce9ad0a472e14c22607c677088ff66459c5600df",
+  "updatedAt": "2026-10-24T11:17:30.777Z",
+  "items": [
+    {
+      "id": "/write-ups/hack-smarter/404-bank-walkthrough/",
+      "title": "404 Bank Walkthrough",
+      "summary": "Hack Smarter 404 Bank walkthrough: initial access, enumeration, credential theft, lateral movement, and privilege escalation in an Active Directory lab.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/404-bank-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 13
+    },
+    {
+      "id": "/write-ups/infinity-learning/abusing-ssm-parameter-access/",
+      "title": "Abusing SSM Parameter Access Walkthrough",
+      "summary": "Abuse Lambda as an execution proxy to retrieve restricted AWS SSM Parameter Store secrets via over-permissioned service roles and indirect access.",
+      "url": "https://nithin0x.space/write-ups/infinity-learning/abusing-ssm-parameter-access/",
+      "platform": "Infinity Learning",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 3
+    },
+    {
+      "id": "/blogs/adcs-attacks/",
+      "title": "AD CS Attacks (ESC1 to ESC15)",
+      "summary": "Deep dive into AD CS vulnerabilities ESC1–ESC15: attack mechanics, exploitation tools, and remediation for each certificate escalation path.",
+      "url": "https://nithin0x.space/blogs/adcs-attacks/",
+      "platform": "Research",
+      "kind": "Blog",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 13
+    },
+    {
+      "id": "/write-ups/hack-smarter/arasaka-walkthrough/",
+      "title": "Arasaka Walkthrough",
+      "summary": "Hack Smarter Arasaka walkthrough: escalate from low-privileged user to Domain Administrator via Kerberoasting and AD CS abuse.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/arasaka-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 7
+    },
+    {
+      "id": "/write-ups/infinity-learning/assume--decrypt-or-vice-versa/",
+      "title": "Assume & Decrypt (or vice versa) Walkthrough",
+      "summary": "Chain minimal IAM privileges, role assumption with external IDs, and KMS decrypt permissions to access encrypted S3 objects and escalate privileges.",
+      "url": "https://nithin0x.space/write-ups/infinity-learning/assume--decrypt-or-vice-versa/",
+      "platform": "Infinity Learning",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 3
+    },
+    {
+      "id": "/write-ups/vulnlab/baby-walkthrough/",
+      "title": "Baby Walkthrough",
+      "summary": "Vulnlab Baby walkthrough: LDAP enumeration, password spraying, BloodHound analysis, and SeBackupPrivilege abuse for full Active Directory compromise.",
+      "url": "https://nithin0x.space/write-ups/vulnlab/baby-walkthrough/",
+      "platform": "Vulnlab",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 7
+    },
+    {
+      "id": "/write-ups/cloudgoat/beanstalk-secrets-walkthrough/",
+      "title": "Beanstalk Secrets Walkthrough",
+      "summary": "Exploit AWS Elastic Beanstalk misconfigurations: enumerate exposed environment variables and abuse excessive IAM permissions for privilege escalation.",
+      "url": "https://nithin0x.space/write-ups/cloudgoat/beanstalk-secrets-walkthrough/",
+      "platform": "CloudGoat",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 3
+    },
+    {
+      "id": "/write-ups/vulnlab/breach-walkthrough/",
+      "title": "Breach Walkthrough",
+      "summary": "Vulnlab Breach: SMB enumeration, NTLM coercion, Kerberoasting, Silver Ticket attacks, and SeImpersonatePrivilege abuse for full domain compromise.",
+      "url": "https://nithin0x.space/write-ups/vulnlab/breach-walkthrough/",
+      "platform": "Vulnlab",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 7
+    },
+    {
+      "id": "/write-ups/hack-smarter/building-magic-walkthrough/",
+      "title": "Building Magic Walkthrough",
+      "summary": "Hack Smarter Building Magic: leaked credentials to full AD compromise via Kerberoasting, password spraying, BloodHound, and LNK-based NTLM relay.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/building-magic-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 6
+    },
+    {
+      "id": "/write-ups/vulnlab/cicada-walkthrough/",
+      "title": "Cicada Walkthrough",
+      "summary": "Vulnlab Cicada: NFS enumeration, Kerberos relay attacks, AD CS abuse, and certificate-based authentication for full Active Directory domain compromise.",
+      "url": "https://nithin0x.space/write-ups/vulnlab/cicada-walkthrough/",
+      "platform": "Vulnlab",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 5
+    },
+    {
+      "id": "/write-ups/hack-smarter/data-secrets-walkthrough/",
+      "title": "Data Secrets Walkthrough",
+      "summary": "Hack Smarter Data Secrets: exploit AWS through IAM enumeration, EC2 compromise, and lateral movement to access Secrets Manager.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/data-secrets-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 3
+    },
+    {
+      "id": "/write-ups/cloudgoat/ec2-ssrf/",
+      "title": "EC2 SSRF Walkthrough",
+      "summary": "Exploit SSRF on AWS EC2 to harvest credentials from the Instance Metadata Service (IMDS) and perform lateral movement within AWS environments.",
+      "url": "https://nithin0x.space/write-ups/cloudgoat/ec2-ssrf/",
+      "platform": "CloudGoat",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 3
+    },
+    {
+      "id": "/write-ups/pwned-labs/exfiltrate-secrets-via-amazon-sns-abuse/",
+      "title": "Exfiltrate Secrets via Amazon SNS Abuse Walkthrough",
+      "summary": "Abuse AWS SNS subscriptions and Lambda to exfiltrate PII from RDS by weaponizing legitimate notification workflows.",
+      "url": "https://nithin0x.space/write-ups/pwned-labs/exfiltrate-secrets-via-amazon-sns-abuse/",
+      "platform": "Pwned Labs",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 8
+    },
+    {
+      "id": "/write-ups/htb/forest-walkthrough/",
+      "title": "Forest Walkthrough",
+      "summary": "HTB Forest: LDAP enumeration, AS-REP Roasting, BloodHound, Exchange Windows Permissions abuse, and DCSync to achieve Active Directory domain compromise.",
+      "url": "https://nithin0x.space/write-ups/htb/forest-walkthrough/",
+      "platform": "Hack The Box",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 5
+    },
+    {
+      "id": "/blogs/http-deep-dive-blog/",
+      "title": "HTTP Deep Dive",
+      "summary": "A practical guide to HTTP for web security: URL structure, request/response cycle, HTTPS, headers, methods, CORS, caching, and REST API mapping.",
+      "url": "https://nithin0x.space/blogs/http-deep-dive-blog/",
+      "platform": "Research",
+      "kind": "Blog",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 17
+    },
+    {
+      "id": "/write-ups/pwned-labs/intro-to-aws-iam-enumeration/",
+      "title": "Intro to AWS IAM Enumeration Walkthrough",
+      "summary": "AWS IAM enumeration: identify permissions, enumerate roles and policies, and escalate privileges via trust relationships and Secrets Manager.",
+      "url": "https://nithin0x.space/write-ups/pwned-labs/intro-to-aws-iam-enumeration/",
+      "platform": "Pwned Labs",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 4
+    },
+    {
+      "id": "/write-ups/infinity-learning/keymaster---decoding-s3-secrets/",
+      "title": "KeyMaster - Decoding S3 Secrets Walkthrough",
+      "summary": "Exploit AWS IAM permission boundaries and KMS misconfigurations to exfiltrate encrypted S3 data using SSE-C keys and privilege escalation.",
+      "url": "https://nithin0x.space/write-ups/infinity-learning/keymaster---decoding-s3-secrets/",
+      "platform": "Infinity Learning",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 4
+    },
+    {
+      "id": "/write-ups/infinity-learning/lambda-escalation/",
+      "title": "Lambda Escalation Walkthrough",
+      "summary": "Exploit IAM misconfigurations and Lambda function permissions to escalate privileges and retrieve sensitive data in this AWS red team simulation.",
+      "url": "https://nithin0x.space/write-ups/infinity-learning/lambda-escalation/",
+      "platform": "Infinity Learning",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 3
+    },
+    {
+      "id": "/write-ups/cloudgoat/lambda-privesc/",
+      "title": "Lambda PrivEsc Walkthrough",
+      "summary": "Escalate privileges in AWS by abusing Lambda functions with excessive permissions and iam:PassRole to achieve full administrative access.",
+      "url": "https://nithin0x.space/write-ups/cloudgoat/lambda-privesc/",
+      "platform": "CloudGoat",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 3
+    },
+    {
+      "id": "/write-ups/hack-smarter/lumon-industries-walkthrough/",
+      "title": "Lumon Industries Walkthrough",
+      "summary": "Hack Smarter Lumon Industries: NTLM coercion, LLMNR poisoning, ForceChangePassword, LAPS, LSA secrets, and DCC2 cracking for domain compromise.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/lumon-industries-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 7
+    },
+    {
+      "id": "/write-ups/vulnlab/sendai-walkthrough/",
+      "title": "Sendai Walkthrough",
+      "summary": "Vulnlab Sendai: network enumeration, password spraying, BloodHound, AD CS abuse, and certificate-based authentication to compromise Active Directory.",
+      "url": "https://nithin0x.space/write-ups/vulnlab/sendai-walkthrough/",
+      "platform": "Vulnlab",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 8
+    },
+    {
+      "id": "/write-ups/hack-smarter/sharethepain-walkthrough/",
+      "title": "ShareThePain Walkthrough",
+      "summary": "Hack Smarter ShareThePain: NTLM coercion, BloodHound analysis, and SeImpersonatePrivilege abuse to achieve full Active Directory domain compromise.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/sharethepain-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 5
+    },
+    {
+      "id": "/write-ups/cloudgoat/sns-secrets-walkthrough/",
+      "title": "SNS Secrets Walkthrough",
+      "summary": "Enumerate and exploit misconfigured AWS SNS and API Gateway services to retrieve secrets via topic subscription abuse and leaked API keys.",
+      "url": "https://nithin0x.space/write-ups/cloudgoat/sns-secrets-walkthrough/",
+      "platform": "CloudGoat",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 5
+    },
+    {
+      "id": "/write-ups/hack-smarter/stellarcomms-walkthrough/",
+      "title": "StellarComms Walkthrough",
+      "summary": "Hack Smarter StellarComms: DACL abuse, Firefox credential theft, GMSA password abuse, and DCSync to escalate from low-privileged user to Domain Admin.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/stellarcomms-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 7
+    },
+    {
+      "id": "/write-ups/hack-smarter/sysco-walkthrough/",
+      "title": "Sysco Walkthrough",
+      "summary": "Hack Smarter Sysco: external pentest against Active Directory covering initial access, enumeration, lateral movement, privilege escalation, and AV evasion.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/sysco-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 8
+    },
+    {
+      "id": "/write-ups/infinity-learning/trust-me-writeup/",
+      "title": "Trust Me Walkthrough",
+      "summary": "Escalate AWS IAM privileges through misconfigured role trust relationships to access S3 data and retrieve flags via role assumption.",
+      "url": "https://nithin0x.space/write-ups/infinity-learning/trust-me-writeup/",
+      "platform": "Infinity Learning",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 2
+    },
+    {
+      "id": "/write-ups/pwned-labs/exploit-weak-bucket-policies-for-privileged-access/",
+      "title": "Weak Bucket Policies for Privileged Access Walkthrough",
+      "summary": "Exploit overly permissive S3 bucket policies to retrieve credentials from password-protected files and gain unauthorized access to web applications.",
+      "url": "https://nithin0x.space/write-ups/pwned-labs/exploit-weak-bucket-policies-for-privileged-access/",
+      "platform": "Pwned Labs",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 3
+    },
+    {
+      "id": "/write-ups/hack-smarter/welcome-walkthrough/",
+      "title": "Welcome Walkthrough",
+      "summary": "Hack Smarter Welcome: phished credentials to domain compromise via password spraying, BloodHound analysis, and AD CS abuse.",
+      "url": "https://nithin0x.space/write-ups/hack-smarter/welcome-walkthrough/",
+      "platform": "Hack Smarter",
+      "kind": "Write-up",
+      "updatedAt": "2026-07-12T16:38:21.000Z",
+      "readingMinutes": 8
+    },
+    {
+      "id": "/write-ups/vulnlab/retro-walkthrough/",
+      "title": "Retro Walkthrough",
+      "summary": "Step-by-step guide for Vulnlab's Retro [Easy] lab: SMB enumeration, RID cycling, pre-created computer account abuse, and AD CS ESC1 escalation to Domain Admin.",
+      "url": "https://nithin0x.space/write-ups/vulnlab/retro-walkthrough/",
+      "platform": "Vulnlab",
+      "kind": "Write-up",
+      "updatedAt": "2026-03-15T14:16:22.000Z",
+      "readingMinutes": 3
+    }
+  ]
+}
