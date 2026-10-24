@@ -81,7 +81,7 @@ export default function Nav() {
         <a href="#hero" className="wordmark" aria-label="nithin0x, back to top" onClick={() => goTo('#hero')}><span className="brand-icon"><Code2 aria-hidden="true" /></span>nithin<span className="brand-suffix">0x</span></a>
         <div className="desktop-links"><p className="nav-caption">Explore</p>{links}</div>
         <div className="nav-external"><p className="nav-caption">Elsewhere</p><a href={profile.blog} target="_blank" rel="noopener noreferrer">nithin0x.space <ArrowUpRight aria-hidden="true" /></a><a href="https://github.com/nithin0x" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight aria-hidden="true" /></a></div>
-        <div className="nav-contact"><div className="nav-person"><span className="avatar">NK</span><span><strong>Nithin Kumar M</strong><small>Cybersecurity analyst</small></span></div><a href={`mailto:${profile.email}`} className="btn btn-primary">Get in touch <ArrowUpRight aria-hidden="true" /></a></div>
+        <div className="nav-contact"><div className="nav-person"><span className="avatar">NK</span><span><strong>Nithin Kumar M</strong><small>Purple teamer</small></span></div><a href={`mailto:${profile.email}`} className="btn btn-primary">Get in touch <ArrowUpRight aria-hidden="true" /></a></div>
         <button ref={menuButton} id="mobile-menu-btn" className="menu-toggle icon-button" onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-menu">{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
       </div>
       <div id="mobile-menu" className="mobile-menu" hidden={!open}>{links}</div>

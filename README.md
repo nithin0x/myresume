@@ -15,6 +15,8 @@ npm run dev
 
 Profile and résumé content lives in `src/data/`. Styles live in `src/app/globals.css`.
 
+The downloadable résumé is `public/Nithin-Kumar-M-Resume.pdf`. Replace that file when updating the PDF; the introduction and toolbar link to it.
+
 The design uses warm paper, charcoal, and orange, with light and dark themes. Headings use Bricolage Grotesque and body text uses Instrument Sans.
 
 ## Build and deploy

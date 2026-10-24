@@ -202,9 +202,6 @@ kbd svg { width: 10px; height: 10px; }
 .project-category { color: var(--lavender-ink); font-size: 11px; margin-bottom: 18px; }
 .project h3 { font-size: 25px; }
 .project-description { color: var(--muted); font-size: 14px; margin-top: 16px; max-width: 720px; }
-.project-points { display: grid; gap: 10px; padding-left: 18px; margin: 18px 0 0; list-style: disc outside; color: var(--muted); font-size: 13px; line-height: 1.85; }
-.project-points li { padding-left: 5px; }
-.project-points li::marker { color: var(--accent); }
 .project-link { display: inline-flex; align-items: baseline; gap: 12px; }
 .project-link:hover { text-decoration: underline; }
 .project-link svg { width: 18px; height: 18px; flex-shrink: 0; }
@@ -347,7 +344,7 @@ kbd svg { width: 10px; height: 10px; }
   .about-grid, .experience-layout, .skills-layout, .credentials-layout, .contact-grid { display: block; }
   .experience-list, .skills-list, .credential-list { margin-top: 18px; }
   .experience-item, .project, .credential-list li, .skill-category { break-inside: avoid; }
-  .about-copy, .about-copy .lead, .experience-bullets, .project-description, .project-points, .contact-intro { font-size: 11px; }
+  .about-copy, .about-copy .lead, .experience-bullets, .project-description, .contact-intro { font-size: 11px; }
   .experience-item { padding-bottom: 10px; }
   .skill-category::details-content { content-visibility: visible; display: block; }
   .skill-category .skill-content { display: block; }

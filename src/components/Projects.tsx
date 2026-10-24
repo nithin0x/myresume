@@ -19,7 +19,6 @@ export default function Projects() {
                 ) : project.title}
               </h3>
               <p className="project-description">{project.description}</p>
-              {project.details && <ul className="project-points">{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>}
             </article>
           ))}
         </div>

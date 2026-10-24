@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
-import { ArrowUpRight, Command, FileText, Moon, Search, Sun, X } from 'lucide-react'
+import { ArrowUpRight, Command, Download, Moon, Search, Sun, X } from 'lucide-react'
 import { navigation } from '@/data/navigation'
 import blog from '@/data/blog-posts.json'
+import { profile } from '@/data/profile'
 
 function subscribeTheme(callback: () => void) {
   window.addEventListener('portfolio-theme', callback)
@@ -70,7 +71,7 @@ export default function PageTools() {
           <button type="button" className="icon-button theme-toggle" onClick={toggleTheme} aria-label="Dark theme" aria-pressed={dark} title="Toggle light and dark theme">
             <Sun className="sun-icon" aria-hidden="true" /><Moon className="moon-icon" aria-hidden="true" />
           </button>
-          <button type="button" className="icon-button print-button" onClick={() => window.print()} aria-label="Print or save résumé as PDF" title="Print or save résumé as PDF"><FileText aria-hidden="true" /></button>
+          <a className="icon-button resume-download" href={profile.resumeUrl} download aria-label="Download résumé as PDF" title="Download résumé as PDF"><Download aria-hidden="true" /></a>
         </div>
       </div>
       <dialog ref={dialog} className="search-dialog" aria-labelledby="search-heading" onClick={(event) => {
@@ -94,7 +95,7 @@ export default function PageTools() {
         </ul>
         <p className="dialog-hint"><kbd>Tab</kbd> to navigate <span>·</span> <kbd>Esc</kbd> to close</p>
       </dialog>
-      <noscript><style>{`.utility-actions { display: none; }`}</style></noscript>
+      <noscript><style>{`.search-trigger, .theme-toggle { display: none; }`}</style></noscript>
     </>
   )
 }

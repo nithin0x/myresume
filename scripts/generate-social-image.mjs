@@ -12,7 +12,7 @@ const image = new ImageResponse(
       h('span', null, profile.handle), h('span', null, profile.location)),
     h('div', { style: { display: 'flex', flexDirection: 'column' } },
       h('div', { style: { fontSize: 88, fontWeight: 700, letterSpacing: -4 } }, profile.name),
-      h('div', { style: { fontSize: 34, marginTop: 24 } }, 'Cybersecurity analyst & penetration tester')),
+      h('div', { style: { fontSize: 34, marginTop: 24 } }, 'Purple teamer & cybersecurity analyst')),
     h('div', { style: { display: 'flex', borderTop: '4px solid #f15b2a', paddingTop: 24, fontSize: 24 } }, new URL(profile.url).hostname)),
   { width: 1200, height: 630 },
 )

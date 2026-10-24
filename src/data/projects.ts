@@ -3,7 +3,6 @@ type Project = {
   category: string
   href: string | null
   description: string
-  details?: string[]
 }
 
 export const projects: Project[] = [
@@ -11,23 +10,13 @@ export const projects: Project[] = [
     title: 'Microsoft 365 & Windows automation',
     category: 'Security automation',
     href: null,
-    description: 'PowerShell and Python scripts for tenant security checks and device administration. I test changes in the lab before using them in production.',
-    details: [
-      'Monitor administrator sign-ins and set up UTCM configuration drift monitoring.',
-      'Extract Microsoft Purview audit logs for review.',
-      'Collect Windows Autopilot hardware hashes and upload them to Microsoft Intune.',
-      'Apply CIS baselines and check Microsoft 365 tenant configuration.',
-    ],
+    description: 'Custom tools and scripts that save time on Microsoft 365 and Windows security and administration. I integrate open-source tooling to fit organizational requirements and test changes before production use.',
   },
   {
-    title: 'NIST SP 800-171 r2 playbooks',
-    category: 'Control implementation & audit',
-    href: null,
-    description: 'Playbooks I wrote for Azure and Microsoft 365 control implementation and audits.',
-    details: [
-      'Cover architecture, control implementation, and the evidence needed for an audit.',
-      'Define continuous monitoring to check that controls stay in place.',
-    ],
+    title: 'Azure cloud security projects',
+    category: 'Cloud security',
+    href: 'https://github.com/nithin0x/AzureCloudSecurityProjects',
+    description: 'Azure lab projects covering identity, network security, monitoring, and secure delivery pipelines. The work is mapped to Microsoft Cloud Security Benchmark, CIS, NIST, and ISO 27001 guidance.',
   },
   {
     title: 'Home attack & defense lab',

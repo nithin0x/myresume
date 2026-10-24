@@ -8,6 +8,10 @@ export default function About() {
         <SectionHeading id="about-heading">About</SectionHeading>
         <div className="about-copy">
           <p className="lead">
+            My work connects penetration testing with cloud hardening, threat modeling, and incident
+            response. I use findings to guide remediation and check that security controls hold up in practice.
+          </p>
+          <p>
             I use Claude in red team and blue team work, including log analysis, reconnaissance
             triage, and report drafts. I verify the output before using it in an assessment.
           </p>
