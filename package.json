@@ -11,11 +11,8 @@
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "check:export": "node scripts/check-export.mjs",
-    "sync:linkedin": "node scripts/sync-linkedin.mjs",
     "test:sync": "node --test scripts/*.test.mjs",
-    "sync:blog": "node scripts/sync-blog.mjs",
-    "sync:content": "npm run sync:blog && npm run sync:linkedin",
-    "set:linkedin": "node scripts/set-linkedin-post.mjs"
+    "sync:blog": "node scripts/sync-blog.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.408.0",

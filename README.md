@@ -58,24 +58,8 @@ After deployment, run PageSpeed Insights for `https://portfolio.nithin0x.space/`
 
 ## Content updates
 
-The **Sync portfolio content** workflow runs daily at 06:00 UTC and supports manual runs. Changed content is validated, committed, and deployed automatically.
+The **Sync blog and write-ups** workflow runs daily at 06:00 UTC and supports manual runs. Changed content is validated, committed, and deployed automatically.
 
 Blog posts and write-ups are imported from [nithin0x/myblogsite](https://github.com/nithin0x/myblogsite). Publish Markdown or MDX files under `src/content/docs/write-ups/` or `src/content/docs/Blogs/` with `title` and `description` frontmatter. Drafts and index pages are skipped. Run `npm run sync:blog` to refresh the saved library locally.
 
-For automatic LinkedIn updates, set the Actions secret `LINKEDIN_FEED_URL` to a JSON endpoint returning the latest post:
-
-```json
-{
-  "title": "Post title",
-  "summary": "Post text or excerpt",
-  "publishedDate": "2026-10-24",
-  "url": "https://www.linkedin.com/feed/update/urn:li:activity:123456789/",
-  "tags": ["Cybersecurity"]
-}
-```
-
-Use a real direct HTTPS LinkedIn post URL and a valid `YYYY-MM-DD` date. `tags` is optional. A LinkedIn profile URL, RSS feed, or raw LinkedIn API response cannot serve as this endpoint. Without a configured feed, the saved post stays unchanged.
-
-The feed endpoint must use HTTPS and return JSON directly, without redirects. Responses are limited to 64 KiB; titles to 200 characters; summaries to 12,000; and tags to 20 entries of up to 60 characters. Blog imports limit frontmatter to 16 KiB, titles to 200 characters, and descriptions to 1,000.
-
-To select a LinkedIn post manually, run **Sync portfolio content** with its URL, title, text, and publication date. For local updates, use `npm run set:linkedin` with `LINKEDIN_POST_URL`, `LINKEDIN_POST_TITLE`, `LINKEDIN_POST_TEXT`, and `LINKEDIN_POST_DATE` set, then rebuild.
+Blog imports limit frontmatter to 16 KiB, titles to 200 characters, and descriptions to 1,000.
