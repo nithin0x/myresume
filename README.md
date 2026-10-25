@@ -52,7 +52,9 @@ GitHub Pages does not apply Next.js `headers()` or Cloudflare Pages `_headers` f
 
 See [Cloudflare's Browser Cache TTL settings](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#browser-ttl). This dashboard change is required separately from the GitHub Pages deployment.
 
-After deployment, run PageSpeed Insights for `https://portfolio.nithin0x.space/` with the **desktop** strategy. Check the search label, CSP/console/Issues audits, stylesheet blocking, asset cache headers, and the existing passing audits. The unused JavaScript and legacy JavaScript findings currently identify precompiled Next.js/React runtime bundles; changing application imports or Browserslist does not remove those framework internals.
+Production testing also found Cloudflare **JavaScript Detections** injecting an inline script with a different hash on each request. The static CSP cannot authorize these hashes at build time. Cloudflare supports CSP nonces from response headers, but not from meta tags. Resolve this in Cloudflare by disabling JavaScript Detections where the plan supports it, or by moving CSP enforcement to a host that generates response-header nonces. Bot Fight Mode enables JavaScript Detections automatically and does not offer a separate toggle; do not disable zone-wide protection as an incidental portfolio fix. See [Cloudflare's CSP compatibility requirements](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/#if-you-have-a-content-security-policy-csp).
+
+After deployment, run PageSpeed Insights for `https://portfolio.nithin0x.space/` with the **desktop** strategy. Check the search label, CSP/console/Issues audits, stylesheet blocking, asset cache headers, and the existing passing audits. Unused and legacy JavaScript findings identify precompiled Next.js/React runtime bundles and, in production, Cloudflare's analytics beacon. Changing application imports or Browserslist does not remove those framework internals. The injected analytics module can also remain in the production dependency tree even though the exported stylesheet is inlined.
 
 ## Content updates
 
