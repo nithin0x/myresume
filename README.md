@@ -31,7 +31,7 @@ npm run check:export
 
 The build exports the site to `out/`. Pushes to `main` deploy through GitHub Actions. Set the repository's **Settings → Pages → Source** to **GitHub Actions**.
 
-After export, the build adds a Content Security Policy with hashes for the generated inline scripts. CI audits dependencies and uses commit-pinned GitHub Actions. Dependabot checks npm packages and Actions weekly.
+After export, the build adds a Content Security Policy with hashes for the generated inline scripts. It also permits Cloudflare's unversioned and versioned Web Analytics beacon paths; the proxied beacon reports to the same-origin `/cdn-cgi/rum` endpoint. Email links use Cloudflare's `email_off` comments to prevent obfuscation and decoder injection. CI audits dependencies and uses commit-pinned GitHub Actions. Dependabot checks npm packages and Actions weekly.
 
 GitHub Pages serves the policy through an HTML meta tag. Header-only controls such as HSTS and CSP `frame-ancestors` require a host or proxy that supports custom response headers.
 

@@ -6,13 +6,17 @@ import { pathToFileURL } from 'node:url'
 export function secureHtml(html) {
   if (!/<head>/i.test(html)) throw new Error('Exported HTML is missing its head element.')
   const clean = html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/gi, '')
+    .replace(/<!--\/?email_off-->/g, '')
+    // Preserve mailto links through Cloudflare without its injected decoder.
+    .replace(/<a\b[^>]*\bhref="mailto:[^"]*"[^>]*>[\s\S]*?<\/a>/gi, '<!--email_off-->$&<!--/email_off-->')
   const hashes = new Set()
   for (const [, attributes, source] of clean.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
     if (!/\bsrc\s*=/i.test(attributes)) hashes.add(`'sha256-${createHash('sha256').update(source).digest('base64')}'`)
   }
   const policy = [
     "default-src 'none'",
-    `script-src 'self' ${[...hashes].join(' ')}`,
+    // Cloudflare injects either the unversioned beacon or a versioned subpath.
+    `script-src 'self' ${[...hashes].join(' ')} https://static.cloudflareinsights.com/beacon.min.js https://static.cloudflareinsights.com/beacon.min.js/`,
     "script-src-attr 'none'",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data:",

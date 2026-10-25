@@ -81,7 +81,7 @@ export default function PageTools() {
         }
       }}>
         <div className="dialog-heading"><h2 id="search-heading">Search the portfolio</h2><button type="button" className="icon-button" onClick={() => dialog.current?.close()} aria-label="Close search"><X aria-hidden="true" /></button></div>
-        <label className="search-field"><Search aria-hidden="true" /><span className="sr-only">Search sections and write-ups</span><input ref={input} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try Active Directory, Azure, or experience…" /></label>
+        <label className="search-field"><Search aria-hidden="true" /><span className="sr-only">Search sections and write-ups</span><input ref={input} name="portfolio-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try Active Directory, Azure, or experience…" /></label>
         <p className="search-count" role="status">{entries.length ? `${entries.length} suggestions` : 'No matches. Try a different keyword.'}</p>
         <ul className="search-results">
           {entries.map((entry) => <li key={entry.href}><a href={entry.href} {...(entry.href.startsWith('https:') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} onClick={() => {
