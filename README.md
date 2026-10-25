@@ -37,6 +37,23 @@ GitHub Pages serves the policy through an HTML meta tag. Header-only controls su
 
 To preview the export, run `python3 -m http.server 4174 --directory out` and visit `http://localhost:4174`.
 
+## PageSpeed and Cloudflare caching
+
+The single-page export uses Next.js `experimental.inlineCss` to remove the blocking stylesheet request. Fonts are self-hosted and preloaded by `next/font`. Inlining increases the HTML size and removes separate stylesheet caching; check desktop Lighthouse when changing styles or upgrading Next.js.
+
+GitHub Pages does not apply Next.js `headers()` or Cloudflare Pages `_headers` files. Configure the asset cache lifetime in Cloudflare for the `nithin0x.space` zone:
+
+1. Create a **Cache Rule** with this expression:
+   ```text
+   (http.host eq "portfolio.nithin0x.space" and starts_with(http.request.uri.path, "/_next/static/"))
+   ```
+2. Set **Browser Cache TTL** to **Override origin** with a TTL of **1 year** (31,536,000 seconds). Keep this rule after any broader matching cache rules.
+3. Confirm an asset response sends `Cache-Control` with `max-age=31536000`. Only Next.js fingerprinted assets match this rule; HTML, the résumé, and other files keep their existing cache behavior.
+
+See [Cloudflare's Browser Cache TTL settings](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#browser-ttl). This dashboard change is required separately from the GitHub Pages deployment.
+
+After deployment, run PageSpeed Insights for `https://portfolio.nithin0x.space/` with the **desktop** strategy. Check the search label, CSP/console/Issues audits, stylesheet blocking, asset cache headers, and the existing passing audits. The unused JavaScript and legacy JavaScript findings currently identify precompiled Next.js/React runtime bundles; changing application imports or Browserslist does not remove those framework internals.
+
 ## Content updates
 
 The **Sync portfolio content** workflow runs daily at 06:00 UTC and supports manual runs. Changed content is validated, committed, and deployed automatically.

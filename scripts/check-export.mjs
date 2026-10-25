@@ -3,6 +3,8 @@ import { readFile, access, readdir } from 'node:fs/promises'
 
 // Check the files actually shipped to static hosting, without a Next.js server.
 const html = await readFile('out/index.html', 'utf8')
+assert.ok(!/<link\b[^>]*rel="stylesheet"/.test(html), 'The single-page stylesheet should be inlined')
+assert.match(html, /<style\b[^>]*data-precedence="next"/, 'Missing inlined application styles')
 const canonical = 'https://portfolio.nithin0x.space/'
 for (const [pattern, label] of [
   [/<h1\b/g, 'primary heading'],
