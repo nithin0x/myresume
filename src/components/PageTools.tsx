@@ -65,7 +65,7 @@ export default function PageTools() {
       <div className="page-tools page-shell">
         <p className="page-breadcrumb">Portfolio <span>/</span> <span>Nithin Kumar M</span></p>
         <div className="utility-actions">
-          <button type="button" className="search-trigger" onClick={openSearch} aria-label="Search portfolio and write-ups">
+          <button type="button" className="search-trigger" onClick={openSearch}>
             <Search aria-hidden="true" /><span>Search portfolio</span><kbd aria-hidden="true"><Command aria-hidden="true" /> K</kbd>
           </button>
           <button type="button" className="icon-button theme-toggle" onClick={toggleTheme} aria-label="Dark theme" aria-pressed={dark} title="Toggle light and dark theme">
