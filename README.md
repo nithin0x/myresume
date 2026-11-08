@@ -17,7 +17,7 @@ Profile and résumé content lives in `src/data/`. Styles live in `src/app/globa
 
 The downloadable résumé is `public/Nithin-Kumar-M-Resume.pdf`. Replace that file when updating the PDF; the introduction and toolbar link to it.
 
-The design uses warm paper, charcoal, and orange, with light and dark themes. Headings use Bricolage Grotesque and body text uses Instrument Sans.
+The design matches `myblogsite`'s Starlight Obsidian theme: neutral light and dark backgrounds, blue accents, system fonts, and the shared terminal logo and favicon. The logo has a light variant for readability on the light background.
 
 ## Build and deploy
 
@@ -39,7 +39,7 @@ To preview the export, run `python3 -m http.server 4174 --directory out` and vis
 
 ## PageSpeed and Cloudflare caching
 
-The single-page export uses Next.js `experimental.inlineCss` to remove the blocking stylesheet request. Fonts are self-hosted and preloaded by `next/font`. Inlining increases the HTML size and removes separate stylesheet caching; check desktop Lighthouse when changing styles or upgrading Next.js.
+The single-page export uses Next.js `experimental.inlineCss` to remove the blocking stylesheet request. System fonts match the blog without requiring font downloads. Inlining increases the HTML size and removes separate stylesheet caching; check desktop Lighthouse when changing styles or upgrading Next.js.
 
 GitHub Pages does not apply Next.js `headers()` or Cloudflare Pages `_headers` files. Configure the asset cache lifetime in Cloudflare for the `nithin0x.space` zone:
 
@@ -58,7 +58,7 @@ After deployment, run PageSpeed Insights for `https://portfolio.nithin0x.space/`
 
 ## Content updates
 
-The **Sync blog and write-ups** workflow runs daily at 06:00 UTC and supports manual runs. Changed content is validated, committed, and deployed automatically.
+GitHub Actions contains one **Deploy to GitHub Pages** workflow; Dependabot checks npm and Actions dependencies weekly. Blog content is refreshed locally with `npm run sync:blog`, then committed with the portfolio changes.
 
 Blog posts and write-ups are imported from [nithin0x/myblogsite](https://github.com/nithin0x/myblogsite). Publish Markdown or MDX files under `src/content/docs/write-ups/` or `src/content/docs/Blogs/` with `title` and `description` frontmatter. Drafts and index pages are skipped. Run `npm run sync:blog` to refresh the saved library locally.
 

@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, BookOpen, BriefcaseBusiness, Code2, FolderCode, House, Mail, Menu, ShieldCheck, UserRound, Wrench, X } from 'lucide-react'
+import { ArrowUpRight, BookOpen, BriefcaseBusiness, FolderCode, House, Mail, Menu, ShieldCheck, UserRound, Wrench, X } from 'lucide-react'
+import Brand from '@/components/Brand'
 import { profile } from '@/data/profile'
 import { navigation } from '@/data/navigation'
 
@@ -78,7 +79,7 @@ export default function Nav() {
   return (
     <header><nav ref={navRef} aria-label="Primary" className="site-nav">
       <div className="nav-inner">
-        <a href="#hero" className="wordmark" aria-label="nithin0x, back to top" onClick={() => goTo('#hero')}><span className="brand-icon"><Code2 aria-hidden="true" /></span>nithin<span className="brand-suffix">0x</span></a>
+        <a href="#hero" className="wordmark" aria-label="nithin0x.space, back to top" onClick={() => goTo('#hero')}><Brand /></a>
         <div className="desktop-links"><p className="nav-caption">Explore</p>{links}</div>
         <div className="nav-external"><p className="nav-caption">Elsewhere</p><a href={profile.blog} target="_blank" rel="noopener noreferrer">nithin0x.space <ArrowUpRight aria-hidden="true" /></a><a href="https://github.com/nithin0x" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight aria-hidden="true" /></a></div>
         <div className="nav-contact"><div className="nav-person"><span className="avatar">NK</span><span><strong>Nithin Kumar M</strong><small>Purple teamer</small></span></div><a href={`mailto:${profile.email}`} className="btn btn-primary">Get in touch <ArrowUpRight aria-hidden="true" /></a></div>
