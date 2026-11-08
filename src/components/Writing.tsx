@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ArrowDown, ArrowUpRight, BookOpen, Clock3, Search, SlidersHorizontal, X } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Clock3, Search, SlidersHorizontal, X } from 'lucide-react'
 import blog from '@/data/blog-posts.json'
 import { profile } from '@/data/profile'
 
@@ -37,7 +37,7 @@ export default function Writing() {
         <div className="library-status"><p role="status" aria-live="polite">{matches.length} {matches.length === 1 ? 'article' : 'articles'}{filtering ? ' found' : ' in the library'}</p>{filtering && <button type="button" className="reset-filters" onClick={reset}>Clear filters <X aria-hidden="true" /></button>}</div>
         <div className="writing-grid">
           {matches.slice(0, limit).map((post) => <article className="writing-card" key={post.id} data-platform={post.platform}>
-            <div className="writing-card-top"><span className="platform-label"><BookOpen aria-hidden="true" />{post.platform}</span><span className="content-kind">{post.kind}</span></div>
+            <div className="writing-card-top"><span className="platform-label">{post.platform}</span><span className="content-kind">{post.kind}</span></div>
             <h3><a href={post.url} target="_blank" rel="noopener noreferrer">{post.title}<ArrowUpRight aria-hidden="true" /></a></h3>
             <p>{post.summary}</p>
             <div className="writing-card-footer"><span><Clock3 aria-hidden="true" />~{post.readingMinutes} min read</span><span>Updated <time dateTime={post.updatedAt}>{dateFormatter.format(new Date(post.updatedAt))}</time></span></div>
