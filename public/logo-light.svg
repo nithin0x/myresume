@@ -1,12 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 60" width="370" height="60">
-  <!-- Terminal Prompt > -->
-  <text x="5" y="45" font-family="monospace" font-size="38" font-weight="bold" fill="#147d32">&gt;</text>
-  
-  <!-- Grouped Text: nithin0x.space -->
+  <text x="5" y="45" font-family="monospace" font-size="38" font-weight="bold" fill="#087f23">&gt;</text>
   <text x="40" y="45" font-size="38">
-    <tspan font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="bold" fill="#17181c">nithin</tspan><tspan font-family="monospace" font-weight="bold" fill="#155da8">0x</tspan><tspan font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="normal" fill="#545861">.space</tspan>
+    <tspan font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="bold" fill="#1f2328">nithin</tspan><tspan font-family="monospace" font-weight="bold" fill="#0969da">0x</tspan><tspan font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="normal" fill="#57606a">.space</tspan>
   </text>
-  
-  <!-- Static Cursor (Animation removed to prevent nav bar distraction) -->
-  <rect x="340" y="18" width="18" height="32" fill="#147d32"/>
+  <rect x="340" y="18" width="18" height="32" fill="#087f23"/>
 </svg>
