@@ -34,7 +34,7 @@ const structuredData = {
       name: profile.name,
       alternateName: profile.handle,
       description: profile.description,
-      image: `${profile.url}social.png`,
+      image: `${profile.url}nithin-kumar-portrait.webp`,
       jobTitle: experience[0].title,
       worksFor: { '@type': 'Organization', name: profile.employer },
       url: profile.url,

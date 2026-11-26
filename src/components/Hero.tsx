@@ -1,16 +1,27 @@
 import { ArrowUpRight, Download, MapPin } from 'lucide-react'
+import Image from 'next/image'
 import { profile } from '@/data/profile'
 
 export default function Hero() {
   return (
     <section id="hero" aria-labelledby="hero-heading" className="hero">
-      <div className="page-shell">
-        <p className="hero-kicker"><span aria-hidden="true" />{profile.specialty} · {profile.role}</p>
-        <h1 id="hero-heading" className="hero-name">Nithin <br />Kumar M</h1>
-        <p className="hero-intro">{profile.headline}</p>
-        <p className="hero-description">At {profile.employer}, I work with internal teams and clients on AI, web, API, and cloud security, vendor risk, and automation.</p>
-        <div className="hero-actions"><a href={profile.resumeUrl} download className="btn btn-primary">Download resume <Download aria-hidden="true" /></a><a href="#writing" className="btn btn-secondary">Read my write-ups <ArrowUpRight aria-hidden="true" /></a></div>
-        <div className="hero-meta"><span><MapPin aria-hidden="true" />{profile.location}</span></div>
+      <div className="page-shell hero-grid">
+        <Image
+          src="/nithin-kumar-portrait.webp"
+          alt="Portrait of Nithin Kumar M"
+          width={800}
+          height={602}
+          preload
+          className="hero-portrait"
+        />
+        <div className="hero-copy">
+          <p className="hero-kicker"><span aria-hidden="true" />{profile.specialty} · {profile.role}</p>
+          <h1 id="hero-heading" className="hero-name">Nithin <br />Kumar M</h1>
+          <p className="hero-intro">{profile.headline}</p>
+          <p className="hero-description">At {profile.employer}, I work with internal teams and clients on AI, web, API, and cloud security, vendor risk, and automation.</p>
+          <div className="hero-actions"><a href={profile.resumeUrl} download className="btn btn-primary">Download resume <Download aria-hidden="true" /></a><a href="#writing" className="btn btn-secondary">Read my write-ups <ArrowUpRight aria-hidden="true" /></a></div>
+          <div className="hero-meta"><span><MapPin aria-hidden="true" />{profile.location}</span></div>
+        </div>
       </div>
     </section>
   )
